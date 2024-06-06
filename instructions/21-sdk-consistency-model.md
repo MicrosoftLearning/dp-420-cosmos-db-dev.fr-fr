@@ -50,17 +50,17 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
 1. Accédez à la ressource de compte **Azure Cosmos DB** nouvellement créée et accédez au volet **Répliquer des données globalement**.
 
-1. Dans le volet **Répliquer des données globalement**, ajoutez deux régions de lecture supplémentaires au compte, puis **Enregistrer** vos modifications.
+1. Dans le volet **Répliquer des données globalement**, ajoutez deux régions de lecture supplémentaires au compte, puis **Enregistrez** vos modifications.
 
-    > &#128221; Dans quelques étapes, vous serez invité à changer le niveau de cohérence en Fort, mais notez que la cohérence forte pour les comptes avec des régions couvrant plus de 5 000 miles (8 000 kilomètres) est bloquée par défaut en raison d’une latence d’écriture élevée. Veillez à choisir des régions plus proches les unes des autres.  Dans un environnement de production, pour activer cette fonctionnalité, contactez le support technique.
+    > &#128221; Dans quelques étapes, vous serez invité à changer le niveau de cohérence en Fort, mais notez que la cohérence forte pour les comptes avec des régions couvrant plus de 5 000 miles (8 000 kilomètres) est bloquée par défaut en raison d’une latence d’écriture élevée. Veillez à choisir des régions plus proches les unes des autres.  Dans un environnement de production, pour activer cette fonctionnalité, contactez le support technique.
 
 1. Attendez que la tâche de réplication se termine avant de poursuivre.
 
-    > &#128221; Cette opération peut prendre environ 5 à 10 minutes et accéder au volet **Cohérence par défaut**.
+    > &#128221; Cette opération peut prendre environ 5 à 10 minutes et accéder au volet **Cohérence par défaut**.
 
 1. Dans le panneau des ressources, accédez au volet **Cohérence par défaut**.
 
-1. Dans le **Cohérence par défaut**, sélectionnez l’option **Fort**, puis **Enregistrez** vos modifications.
+1. Dans le volet **Cohérence par défaut**, sélectionnez l’option **Fort**, puis **Enregistrez** vos modifications.
 
 1. Attendez que la modification du niveau de cohérence par défaut persiste avant de poursuivre cette tâche.
 
@@ -97,7 +97,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
 1. Sélectionnez **Enregistrer** depuis la barre de commandes pour ajouter l’élément JSON :
 
-1. Dans l’onglet **Éléments** , observez le nouvel élément dans le volet **Éléments**.
+1. Dans l’onglet **Éléments**, observez le nouvel élément dans le volet **Éléments**.
 
 1. Dans le panneau des ressources, accédez au volet **Clés**.
 
@@ -131,7 +131,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
 1. Ouvrez le fichier de code **product.cs**.
 
-1. Observez l’enregistrement **Produit** et ses propriétés correspondantes. Plus précisément, cet atelier utilisera les propriétés **id**, **nom** et **categoryId**.
+1. Observez l’enregistrement **Produit** et ses propriétés correspondantes. Plus précisément, cet atelier utilisera les propriétés **id**, **name** et **categoryId**.
 
 1. De retour dans le volet **Explorateur** de **Visual Studio Code**, ouvrez le fichier de code **script.cs**.
 
@@ -143,7 +143,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
     string endpoint = "<cosmos-endpoint>";
     ```
 
-    > &#128221; Par exemple, si votre point de terminaison est : **https&shy;://dp420.documents.azure.com:443/**, alors l'instruction C# serait : **chaîne de point de terminaison = "https&shy;://dp420.documents.azure.com:443/";**.
+    > &#128221; Par exemple, si votre point de terminaison est : **https&shy;://dp420.documents.azure.com:443/**, alors l'instruction C# serait : **chaîne de point de terminaison = "https&shy;://dp420.documents.azure.com:443/";**.
 
 1. Recherchez la variable **string** nommée **key**. Définissez sa valeur sur la **clé** du compte Azure Cosmos DB que vous avez créé précédemment.
 
@@ -159,37 +159,37 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
 La classe **ItemRequestOptions** contient des propriétés de configuration par requête. Cette classe permet d'assouplir le niveau de cohérence, qui passe de la valeur par défaut actuelle de forte à éventuelle.
 
-1. Créez une variable de chaîne nommée **id** avec la valeur **7d9273d9-5d91-404c-bb2d-126abb6e4833** :
+1. Créez une variable de chaîne nommée **id** avec la valeur **7d9273d9-5d91-404c-bb2d-126abb6e4833** :
 
     ```
     string id = "7d9273d9-5d91-404c-bb2d-126abb6e4833";
     ```
 
-1. Créez une variable de chaîne nommée **categoryId** avec la valeur **78d204a2-7d64-4f4a-ac29-9bfc437ae959** :
+1. Créez une variable de chaîne nommée **categoryId** avec la valeur **78d204a2-7d64-4f4a-ac29-9bfc437ae959** :
 
     ```
     string categoryId = "78d204a2-7d64-4f4a-ac29-9bfc437ae959";
     ```
 
-1. Créez une variable de type **PartitionKey** nommée **partitionKey** en passant la variable **categoryId** en tant que paramètre de constructeur :
+1. Créez une variable de type **PartitionKey** nommée **partitionKey** en passant la variable **categoryId** en tant que paramètre de constructeur :
 
     ```
     PartitionKey partitionKey = new (categoryId);
     ```
 
-1. Appelez de façon asynchrone la méthode **ReadItemAsync\<\>** générique de la variable **conteneur**en passant les variables **id** et ** partitionkey** en tant que paramètres de méthode, en utilisant **Product** comme type générique et en stockant le résultat dans une variable nommée ** réponse**de type **ItemResponse\<Product\>**  :
+1. Appelez de façon asynchrone la méthode **ReadItemAsync\<\>** générique de la variable **conteneur**en passant les variables **id** et ** partitionkey** en tant que paramètres de méthode, en utilisant **Product** comme type générique et en stockant le résultat dans une variable nommée ** réponse**de type **ItemResponse\<Product\>** :
 
     ```
     ItemResponse<Product> response = await container.ReadItemAsync<Product>(id, partitionKey);
     ```
 
-1. Appelez la méthode statique **Console.WriteLine** pour imprimer les frais de requête à l’aide d’une chaîne de sortie mise en forme :
+1. Appelez la méthode statique **Console.WriteLine** pour imprimer les frais de requête à l’aide d’une chaîne de sortie mise en forme :
 
     ```
     Console.WriteLine($"STRONG Request Charge:\t{response.RequestCharge:0.00} RUs");
     ```
 
-1. Une fois que vous avez terminé, votre fichier de code devrait maintenant inclure :
+1. Une fois que vous avez terminé, votre fichier de code devrait maintenant inclure :
 
     ```
     using Microsoft.Azure.Cosmos;
@@ -213,9 +213,9 @@ La classe **ItemRequestOptions** contient des propriétés de configuration par 
 
 1. **Enregistrez** le fichier de code **script.cs**.
 
-1. Dans **Visual Studio Code**, ouvrez le menu contextuel du dossier **21-sdk-consistency-model**, puis sélectionnez **Ouvrir dans le terminal intégré** pour ouvrir une nouvelle instance de terminal.
+1. Dans **Visual Studio Code**, ouvrez le menu contextuel du dossier **21-sdk-consistency-model**, puis sélectionnez **Ouvrir dans le terminal intégré** pour ouvrir une nouvelle instance de terminal.
 
-1. Générez et exécutez le projet en utilisant la commande **[dotnet run][docs.microsoft.com/dotnet/core/tools/dotnet-run]**  :
+1. Générez et exécutez le projet en utilisant la commande **[dotnet run][docs.microsoft.com/dotnet/core/tools/dotnet-run]** :
 
     ```
     dotnet run
@@ -223,13 +223,13 @@ La classe **ItemRequestOptions** contient des propriétés de configuration par 
 
 1. Observez la sortie du terminal. Le montant de la requête (en RU) doit être imprimé sur la console.
 
-    > &#128221; Les frais de requête actuels doivent être de **2 RU**. Cela s'explique par le fait que la cohérence forte exige une lecture à partir d'au moins deux répliques pour s'assurer qu'il s'agit de la dernière écriture.
+    > &#128221; Les frais de requête actuels doivent être de **2 RU**. Cela s'explique par le fait que la cohérence forte exige une lecture à partir d'au moins deux répliques pour s'assurer qu'il s'agit de la dernière écriture.
 
 1. Fermez le terminal intégré.
 
 1. Revenez à l’onglet de l’éditeur pour le fichier de code **script.cs**.
 
-1. Supprimez les lignes de code suivantes :
+1. Supprimez les lignes de code suivantes :
 
     ```
     ItemResponse<Product> response = await container.ReadItemAsync<Product>(id, partitionKey);
@@ -237,7 +237,7 @@ La classe **ItemRequestOptions** contient des propriétés de configuration par 
     Console.WriteLine($"Request Charge:\t{response.RequestCharge:0.00} RUs");
     ```
 
-1. Créez une variable nommée **options** de type [ItemRequestOptions][docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.itemrequestoptions] définissant la propriété [ConsistencyLevel][docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.itemrequestoptions.consistencylevel] sur la valeur d’énumération [ConsistencyLevel.Eventual][docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.consistencylevel] :
+1. Créez une variable nommée **options** de type [ItemRequestOptions][docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.itemrequestoptions] définissant la propriété [ConsistencyLevel][docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.itemrequestoptions.consistencylevel] sur la valeur d’énumération [ConsistencyLevel.Eventual][docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.consistencylevel] :
 
     ```
     ItemRequestOptions options = new()
@@ -246,19 +246,19 @@ La classe **ItemRequestOptions** contient des propriétés de configuration par 
     };
     ```
 
-1. Appelez de façon asynchrone la méthode **ReadItemAsync\<\>** générique de la variable **conteneur**en passant les variables **id**, ** partitionKey** et **options** en tant que paramètres de méthode, en utilisant **Product** comme type générique et en stockant le résultat dans une variable nommée **réponse** de type **ItemResponse\<Product\>**  :
+1. Appelez de façon asynchrone la méthode **ReadItemAsync\<\>** générique de la variable **conteneur** en passant les variables **id**, ** partitionKey** et **options** en tant que paramètres de méthode, en utilisant **Product** comme type générique et en stockant le résultat dans une variable nommée **response** de type **ItemResponse\<Product\>** :
 
     ```
     ItemResponse<Product> response = await container.ReadItemAsync<Product>(id, partitionKey, requestOptions: options);
     ```
 
-1. Appelez la méthode statique **Console.WriteLine** pour imprimer les frais de requête à l’aide d’une chaîne de sortie mise en forme :
+1. Appelez la méthode statique **Console.WriteLine** pour imprimer les frais de requête à l’aide d’une chaîne de sortie mise en forme :
 
     ```
     Console.WriteLine($"EVENTUAL Request Charge:\t{response.RequestCharge:0.00} RUs");
     ```
 
-1. Une fois que vous avez terminé, votre fichier de code devrait maintenant inclure :
+1. Une fois que vous avez terminé, votre fichier de code devrait maintenant inclure :
 
     ```
     using Microsoft.Azure.Cosmos;
@@ -287,9 +287,9 @@ La classe **ItemRequestOptions** contient des propriétés de configuration par 
 
 1. **Enregistrez** le fichier de code **script.cs**.
 
-1. Dans **Visual Studio Code**, ouvrez le menu contextuel du dossier **21-sdk-consistency-model**, puis sélectionnez **Ouvrir dans le terminal intégré** pour ouvrir une nouvelle instance de terminal.
+1. Dans **Visual Studio Code**, ouvrez le menu contextuel du dossier **21-sdk-consistency-model**, puis sélectionnez **Ouvrir dans le terminal intégré** pour ouvrir une nouvelle instance de terminal.
 
-1. Générez et exécutez le projet en utilisant la commande **[dotnet run][docs.microsoft.com/dotnet/core/tools/dotnet-run]**  :
+1. Générez et exécutez le projet en utilisant la commande **[dotnet run][docs.microsoft.com/dotnet/core/tools/dotnet-run]** :
 
     ```
     dotnet run
@@ -297,7 +297,7 @@ La classe **ItemRequestOptions** contient des propriétés de configuration par 
 
 1. Observez la sortie du terminal. Le montant de la requête (en RU) doit être imprimé sur la console.
 
-    > &#128221; Les frais de requête actuels doivent être de **1 RU**. Cela s'explique par le fait que la cohérence éventuelle ne nécessite qu'une lecture à partir d'une seule réplique.
+    > &#128221; Les frais de requête actuels doivent être de **1 RU**. Cela s'explique par le fait que la cohérence éventuelle ne nécessite qu'une lecture à partir d'une seule réplique.
 
 1. Fermez le terminal intégré.
 
