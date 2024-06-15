@@ -12,18 +12,18 @@ Dans ce labo, vous effectuez **une sauvegarde** et **des restaurations** à l’
 
 ## Créer un compte Azure Cosmos DB for NoSQL
 
-Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge différentes API. Quand vous provisionnez un compte Azure Cosmos DB pour la première fois, vous sélectionnez les API que le compte doit prendre en charge (par exemple, l’**API Mongo** ou l’**API NoSQL**). Une fois le compte Azure Cosmos DB for NoSQL approvisionné, vous pouvez récupérer le point de terminaison et la clé. Utilisez le point de terminaison et la clé pour vous connecter par programmation au compte Azure Cosmos DB for NoSQL. Utilisez le point de terminaison et la clé sur les chaînes de connexion du kit de développement logiciel (SDK) Azure pour .NET ou un autre SDK.
+Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge plusieurs API. Quand vous approvisionnez un compte Azure Cosmos DB pour la première fois, vous sélectionnez les API que le compte doit prendre en charge (par exemple, l’**API Mongo** ou l’**API NoSQL**). Une fois le compte Azure Cosmos DB for NoSQL approvisionné, vous pouvez récupérer le point de terminaison et la clé. Utilisez le point de terminaison et la clé pour vous connecter par programmation au compte Azure Cosmos DB for NoSQL. Utilisez le point de terminaison et la clé sur les chaînes de connexion du Kit de développement logiciel (SDK) Azure pour .NET ou un autre SDK.
 
-1. Dans une nouvelle fenêtre ou un nouvel onglet de navigateur web, accédez au Portail Azure (``portal.azure.com``).
+1. Dans une nouvelle fenêtre ou un nouvel onglet du navigateur web, accédez au Portail Azure (``portal.azure.com``).
 
 1. Connectez-vous au portail en utilisant les informations d’identification Microsoft associées à votre abonnement.
 
-1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une nouvelle ressource de compte **Azure Cosmos DB for NoSQL** avec les paramètres suivants, en laissant tous les paramètres restants à leurs valeurs par défaut :
+1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une ressource de compte **Azure Cosmos DB for NoSQL** avec les paramètres suivants, en conservant les valeurs par défaut de tous les autres paramètres :
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
     | **Abonnement** | *Votre abonnement Azure existant* |
-    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un nouveau* |
+    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
     | **Lieu** | *Choisissez une région disponible* |
     | **Mode de capacité** | *Débit approvisionné* |
