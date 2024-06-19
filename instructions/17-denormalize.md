@@ -12,15 +12,15 @@ Dans ce labo, vous allez examiner les avantages de la façon dont dénormaliser 
 
 ## Préparer votre environnement de développement
 
-Si vous n’avez pas déjà cloné le référentiel de code labo pour **DP-420** à l’environnement dans lequel vous travaillez sur ce labo, procédez comme suit. Sinon, ouvrez le dossier cloné précédemment dans **Visual Studio Code**.
+Si vous n’avez pas encore cloné le référentiel de code du labo pour le cours **DP-420** dans l’environnement utilisé, suivez ces étapes. Sinon, ouvrez le dossier précédemment cloné dans **Visual Studio Code**.
 
 1. Démarrez **Visual Studio Code**.
 
-    > &#128221 ; Si vous n’êtes pas déjà familiarisé avec l’interface Visual Studio Code, consultez le [Guide de prise en main de Visual Studio Code][code.visualstudio.com/docs/getstarted]
+    > &#128221; Si vous n’êtes pas encore familiarisé avec l’interface de Visual Studio Code, consultez le [guide de démarrage de Visual Studio Code][code.visualstudio.com/docs/getstarted]
 
-1. Ouvrez la palette de commandes et exécutez **Git: Clone** pour cloner le référentiel GitHub ``https://github.com/microsoftlearning/dp-420-cosmos-db-dev`` dans un dossier local de votre choix.
+1. Ouvrez la palette de commandes et exécutez **Git : Cloner** pour cloner le référentiel GitHub ``https://github.com/microsoftlearning/dp-420-cosmos-db-dev`` dans un dossier local de votre choix.
 
-    > &#128161; Vous pouvez utiliser le raccourci clavier **Ctrl+Maj+P** pour ouvrir la palette de commandes.
+    > &#128161; Vous pouvez utiliser le raccourci clavier **Ctrl + Maj + P** pour ouvrir la palette de commandes.
 
 1. Une fois le référentiel cloné, ouvrez le dossier local que vous avez sélectionné dans **Visual Studio Code**.
 
@@ -30,16 +30,23 @@ Si vous n’avez pas déjà cloné le référentiel de code labo pour **DP-420**
 
 1. Si le terminal s’ouvre en tant que terminal **Windows PowerShell**, ouvrez un nouveau terminal **Git Bash**.
 
-    > &#128161; Pour ouvrir un terminal **Git Bash**, sur le côté droit du menu du terminal, cliquez sur la liste déroulante en regard du signe **+** et choisissez *Git Bash*.
+    > &#128161; Pour ouvrir un terminal **Git Bash**, à droite du menu du terminal, cliquez sur la liste déroulante à côté du signe **+** et choisissez *Git Bash*.
 
-1. Dans le terminal **Git Bash**, exécutez les commandes qui suivent. Les commandes ouvrent une fenêtre de navigateur pour vous connecter au Portail Azure où vous utiliserez les informations d’identification du labo fournies, exécuterez un script qui crée un nouveau compte Azure Cosmos DB, puis générerez et démarrerez l’application que vous utilisez pour remplir la base de données et effectuer les exercices. *Une fois que vous avez entré les informations d’identification fournies pour le compte Azure, la génération peut prendre de 15 à 20 minutes. C’est peut-être le bon moment pour aller vous chercher un café ou un thé*.
+1. Dans le **terminal Git Bash**, exécutez les commandes suivantes. Les commandes ouvrent une fenêtre de navigateur pour vous connecter au portail Azure où vous utiliserez les informations d’identification du labo fournies.
 
     ```
     "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
     az login
     cd 17-denormalize
-    bash init.sh
     dotnet add package Microsoft.Azure.Cosmos --version 3.22.1
+    ```
+
+    > &#128161; Si vous avez exécuté le labo **Mesurer les performances des entités clientes** d’abord et que vous n’avez pas supprimé les ressources Azure créées par ce labo, fermez le terminal intégré, ignorez l’étape suivante et passez à la section suivante. Notez que si vous disposez déjà des ressources créées par le labo **Mesurer les performances des entités clientes** et que vous essayez d’exécuter le script ci-dessous, le script échoue.
+
+1. Dans le **terminal Git Bash**, exécutez les commandes suivantes. Les commandes exécutent un script qui crée un compte Azure Cosmos DB, puis créent et démarrent l’application que vous utilisez pour remplir la base de données et effectuer les exercices. *Une fois que vous avez entré les informations d’identification fournies pour le compte Azure, la génération peut durer entre 15 et 20 minutes*.
+
+    ```
+    bash init.sh
     dotnet build
     dotnet run --load-data
     echo "Data Load completed."
@@ -523,5 +530,9 @@ Voyons la requête pour obtenir vos 10 meilleurs clients.
     Vous pouvez ne pas vous rendre compte que la requête d’obtention des 10 meilleurs clients est une requête interpartitions qui traverse toutes les partitions de votre conteneur.
 
     Le lab associé à celui-ci souligne que vous devez éviter autant que possible les requêtes inter-partitions. Toutefois, en réalité, ces requêtes peuvent fonctionner dans les situations où le conteneur est petit ou si la requête ne s’exécute que peu fréquemment. Si la requête est exécutée souvent ou si le conteneur est exceptionnellement grand, cela peut valoir la peine d’explorer le coût de la matérialisation de ces données dans un autre conteneur et de les utiliser pour traiter cette requête.
+
+## Nettoyage
+
+Supprimez le groupe de ressources créé dans ce labo.  Si vous n’avez pas l’accès pour supprimer le groupe de ressources, supprimez tous les objets Azure créés par ce labo.
 
 [code.visualstudio.com/docs/getstarted]: https://code.visualstudio.com/docs/getstarted/tips-and-tricks

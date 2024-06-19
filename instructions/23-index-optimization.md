@@ -12,37 +12,37 @@ Dans ce labo, nous allons utiliser une application .NET de test pour insérer un
 
 ## Préparer votre environnement de développement
 
-Si vous n’avez pas déjà cloné le référentiel de code labo pour **DP-420** à l’environnement dans lequel vous travaillez sur ce labo, procédez comme suit. Sinon, ouvrez le dossier cloné précédemment dans **Visual Studio Code**.
+Si vous n’avez pas encore cloné le référentiel de code du labo pour le cours **DP-420** dans l’environnement utilisé, suivez ces étapes. Sinon, ouvrez le dossier précédemment cloné dans **Visual Studio Code**.
 
 1. Démarrez **Visual Studio Code**.
 
-    > &#128221; Si vous n’êtes pas déjà familiarisé avec l’interface Visual Studio Code, consultez la [Documentation de prise en main][code.visualstudio.com/docs/getstarted]
+    > &#128221; Si vous n’êtes pas déjà familiarisé avec l’interface Visual Studio Code, consultez la [documentation de prise en main][code.visualstudio.com/docs/getstarted]
 
 1. Ouvrez la palette de commandes et exécutez **Git: Clone** pour cloner le référentiel GitHub ``https://github.com/microsoftlearning/dp-420-cosmos-db-dev`` dans un dossier local de votre choix.
 
-    > &#128161; Vous pouvez utiliser le raccourci clavier **Ctrl+Maj+P** pour ouvrir la palette de commandes.
+    > &#128161; Vous pouvez utiliser le raccourci clavier **Ctrl + Maj + P** pour ouvrir la palette de commandes.
 
 1. Une fois le référentiel cloné, ouvrez le dossier local que vous avez sélectionné dans **Visual Studio Code**.
 
 ## Créer un compte Azure Cosmos DB for NoSQL
 
-Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge différentes API. Lors du provisionnement d’un compte Azure Cosmos DB pour la première fois, vous sélectionnerez les API que vous souhaitez que le compte prenne en charge (par exemple, l’**API Mongo** ou l’**API NoSQL**). Une fois que le compte Azure Cosmos DB for NoSQL a terminé l’approvisionnement, vous pouvez récupérer le point de terminaison et la clé et les utiliser pour vous connecter au compte Azure Cosmos DB for NoSQL en utilisant le kit de développement logiciel (SDK) Azure pour .NET, ou tout autre Kit de développement logiciel (SDK) de votre choix.
+Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge plusieurs API. Quand vous approvisionnez un compte Azure Cosmos DB pour la première fois, vous sélectionnez les API que le compte doit prendre en charge (par exemple l’**API Mongo** ou l’**API NoSQL**). Une fois l’approvisionnement du compte Azure Cosmos DB for NoSQL effectué, vous pouvez récupérer le point de terminaison et la clé, puis les utiliser pour vous connecter au compte Azure Cosmos DB for NoSQL en utilisant le kit Azure SDK pour .NET ou tout autre kit SDK de votre choix.
 
-1. Dans une nouvelle fenêtre ou un nouvel onglet de navigateur web, accédez au Portail Azure (``portal.azure.com``).
+1. Dans une nouvelle fenêtre ou un nouvel onglet du navigateur web, accédez au portail Azure (``portal.azure.com``).
 
 1. Connectez-vous au portail en utilisant les informations d’identification Microsoft associées à votre abonnement.
 
-1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une nouvelle ressource de compte **Azure Cosmos DB for NoSQL** avec les paramètres suivants, en laissant tous les paramètres restants à leurs valeurs par défaut :
+1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une ressource de compte **Azure Cosmos DB for NoSQL** avec les paramètres suivants, en conservant les valeurs par défaut de tous les autres paramètres :
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
     | **Abonnement** | *Votre abonnement Azure existant* |
-    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un nouveau* |
+    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
     | **Lieu** | *Choisissez une région disponible* |
     | **Mode de capacité** | *Sans serveur* |
 
-    > &#128221 ; vos environnements lab peuvent avoir des restrictions vous empêchant de créer un nouveau groupe de ressources. Si tel est le cas, utilisez le groupe de ressources pré-créé existant.
+    > &#128221; Vos environnements de labo peuvent présenter des restrictions qui vous empêchent de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
 
 1. Attendez que la tâche de déploiement se termine avant de poursuivre.
 
@@ -50,7 +50,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
 1. Dans le volet **Explorateur de données** , sélectionnez **Nouveau conteneur**.
 
-1. Dans la fenêtre contextuelle **Nouveau conteneur**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
+1. Dans la fenêtre contextuelle **Nouveau conteneur**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
 
     | **Paramètre** | **Valeur** |
     | --: | :-- |
@@ -58,15 +58,15 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
     | **ID de conteneur** | *``products``* |
     | **Clé de partition** | *``/categoryId``* |
 
-1. De retour dans le volet **Explorateur de données**, développez le nœud de base de données **cosmicworks** , puis observez le nœud de conteneur des **produits** dans la hiérarchie.
+1. De retour dans le volet **Explorateur de données**, développez le nœud de base de données **cosmicworks**, puis observez le nœud de conteneur des **produits** dans la hiérarchie.
 
 1. Dans le panneau des ressources, accédez au volet **Clés**.
 
-1. Ce volet contient les informations de connexion et les informations d’identification nécessaires pour se connecter au compte depuis le kit de développement logiciel (SDK). Plus précisément :
+1. Ce volet contient les détails de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du SDK. Plus précisément :
 
-    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus loin dans cet exercice.
+    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus tard dans cet exercice.
 
-    1. Remarquez le champ **PRIMARY KEY**. Vous utiliserez cette valeur **key** plus loin dans cet exercice.
+    1. Notez le champ **CLÉ PRIMAIRE**. Vous utiliserez cette valeur **key** plus tard dans cet exercice.
 
 1. Revenez à **Visual Studio Code**.
 
@@ -92,21 +92,21 @@ Ce labo dispose d’une application .NET de test prédéfinie qui prend un objet
 
 1. Ouvrez le fichier de code **script.cs**.
 
-1. Localisez la variable **string** nommée **endpoint**. Définissez sa valeur sur le **point de terminaison** du compte Azure Cosmos DB que vous avez créé précédemment.
+1. Localisez la variable **string** nommée **endpoint**. Définissez sa valeur sur le **point de terminaison** du compte Azure Cosmos DB créé précédemment.
   
     ```
     string endpoint = "<cosmos-endpoint>";
     ```
 
-    > &#128221; Par exemple, si votre point de terminaison est : **https&shy;://dp420.documents.azure.com:443/**, alors l'instruction C# serait : **string endpoint = "https&shy;://dp420.documents.azure.com:443/";**.
+    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/**, l’instruction C# est **string endpoint = "https&shy;://dp420.documents.azure.com:443/";**.
 
-1. Recherchez la variable **string** nommée **key**. Définissez sa valeur sur la **clé** du compte Azure Cosmos DB que vous avez créé précédemment.
+1. Localisez la variable **string** nommée **key**. Définissez sa valeur sur la **clé** du compte Azure Cosmos DB créé précédemment.
 
     ```
     string key = "<cosmos-key>";
     ```
 
-    > &#128221; Par exemple, si votre clé est : **fDR2ci9QgkdkvERTQ==**, alors l'instruction C# serait : **string key = "fDR2ci9QgkdkvERTQ==";**.
+    > &#128221; Par exemple, si votre clé est **fDR2ci9QgkdkvERTQ==**, l’instruction C# est **string key = "fDR2ci9QgkdkvERTQ==";**.
 
 1. **Enregistrez** le fichier de code **script.cs**.
 

@@ -16,11 +16,11 @@ Si vous n’avez pas encore cloné le référentiel de code du labo pour le cour
 
 1. Démarrez **Visual Studio Code**.
 
-    > &#128221; Si vous n’êtes pas encore familiarisé avec l’interface de Visual Studio Code, consultez le [Guide de démarrage de Visual Studio Code][code.visualstudio.com/docs/getstarted].
+    > &#128221; Si vous n’êtes pas encore familiarisé avec l’interface de Visual Studio Code, consultez le [guide de démarrage de Visual Studio Code][code.visualstudio.com/docs/getstarted]
 
-1. Ouvrez la palette de commandes et exécutez **Git: Clone** pour cloner le référentiel GitHub ``https://github.com/microsoftlearning/dp-420-cosmos-db-dev`` dans un dossier local de votre choix.
+1. Ouvrez la palette de commandes et exécutez **Git : Cloner** pour cloner le référentiel GitHub ``https://github.com/microsoftlearning/dp-420-cosmos-db-dev`` dans un dossier local de votre choix.
 
-    > &#128161; Vous pouvez utiliser le raccourci clavier **Ctrl+Maj+P** pour ouvrir la palette de commandes.
+    > &#128161; Vous pouvez utiliser le raccourci clavier **Ctrl + Maj + P** pour ouvrir la palette de commandes.
 
 1. Une fois le référentiel cloné, ouvrez le dossier local que vous avez sélectionné dans **Visual Studio Code**.
 
@@ -28,7 +28,7 @@ Si vous n’avez pas encore cloné le référentiel de code du labo pour le cour
 
 Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge plusieurs API. Quand vous approvisionnez un compte Azure Cosmos DB pour la première fois, vous sélectionnez les API que le compte doit prendre en charge (par exemple l’**API Mongo** ou l’**API NoSQL**). Une fois l’approvisionnement du compte Azure Cosmos DB for NoSQL effectué, vous pouvez récupérer le point de terminaison et la clé, puis les utiliser pour vous connecter au compte Azure Cosmos DB for NoSQL en utilisant le kit Azure SDK pour .NET ou tout autre kit SDK de votre choix.
 
-1. Dans une nouvelle fenêtre ou un nouvel onglet du navigateur web, accédez au Portail Azure (``portal.azure.com``).
+1. Dans une nouvelle fenêtre ou un nouvel onglet du navigateur web, accédez au portail Azure (``portal.azure.com``).
 
 1. Connectez-vous au portail en utilisant les informations d’identification Microsoft associées à votre abonnement.
 
@@ -52,7 +52,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
 1. Ce volet contient les détails de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du kit SDK. Plus précisément :
 
-    1. Notez le champ **URI**. Vous utiliserez cette valeur de **point de terminaison** plus tard dans cet exercice.
+    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus tard dans cet exercice.
 
     1. Notez le champ **CLÉ PRIMAIRE**. Vous utiliserez cette valeur de **clé** plus tard dans cet exercice.
 
@@ -60,7 +60,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
 ## Afficher la bibliothèque Microsoft.Azure.Cosmos sur NuGet
 
-Le site web NuGet contient un index dans lequel vous pouvez rechercher des packages que vous pouvez importer dans vos applications .NET. Pour importer un package en préversion tel que **Microsoft.Azure.Cosmos**, vous pouvez utiliser le site web de NuGet pour obtenir les versions et commandes appropriées afin d’importer le package dans vos applications.
+Le site web NuGet contient un index pouvant faire l’objet d’une recherche des packages que vous pouvez importer dans vos applications .NET. Pour importer un package en préversion tel que **Microsoft.Azure.Cosmos**, vous pouvez utiliser le site web de NuGet pour obtenir les versions et commandes appropriées afin d’importer le package dans vos applications.
 
 1. Sous le nouvel onglet du navigateur, accédez au site web de NuGet (``nuget.org``).
 

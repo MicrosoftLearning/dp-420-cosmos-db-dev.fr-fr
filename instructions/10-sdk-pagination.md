@@ -12,78 +12,78 @@ Dans ce labo, vous allez créer un itérateur de flux qui peut être utilisé da
 
 ## Préparer votre environnement de développement
 
-Si vous n'avez pas encore cloné le référentiel de code de laboratoire pour le **DP-420** dans l'environnement dans lequel vous travaillez sur cet atelier, suivez ces étapes pour ce faire. Sinon, ouvrez le dossier précédemment cloné dans **Visual Studio Code**.
+Si vous n’avez pas encore cloné le référentiel de code du labo pour le cours **DP-420** dans l’environnement utilisé, suivez ces étapes. Sinon, ouvrez le dossier précédemment cloné dans **Visual Studio Code**.
 
 1. Démarrez **Visual Studio Code**.
 
-    > &#128221; Si vous n'êtes pas déjà familier avec l'interface de Visual Studio Code, consultez le [guide de démarrage de Visual Studio Code][code.visualstudio.com/docs/getstarted]
+    > &#128221; Si vous n’êtes pas encore familiarisé avec l’interface de Visual Studio Code, consultez le [guide de démarrage de Visual Studio Code][code.visualstudio.com/docs/getstarted]
 
-1. Ouvrez la palette de commandes et exécutez **Git : Clonez** pour cloner le dépôt GitHub ``https://github.com/microsoftlearning/dp-420-cosmos-db-dev`` dans un dossier local de votre choix.
+1. Ouvrez la palette de commandes et exécutez **Git : Cloner** pour cloner le référentiel GitHub ``https://github.com/microsoftlearning/dp-420-cosmos-db-dev`` dans un dossier local de votre choix.
 
-    > &#128161; Vous pouvez utiliser le raccourci clavier **CTRL+SHIFT+P** pour ouvrir la palette de commandes.
+    > &#128161; Vous pouvez utiliser le raccourci clavier **Ctrl + Maj + P** pour ouvrir la palette de commandes.
 
 1. Une fois le référentiel cloné, ouvrez le dossier local que vous avez sélectionné dans **Visual Studio Code**.
 
 ## Créer un compte Azure Cosmos DB for NoSQL
 
-Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge plusieurs API. Lors du provisionnement d’un compte Azure Cosmos DB pour la première fois, vous sélectionnerez les API que vous souhaitez que le compte prenne en charge (par exemple, l’**API Mongo** ou l’**API NoSQL**). Une fois le provisionnement du compte Azure Cosmos DB pour NoSQL terminé, vous pouvez récupérer le point de terminaison et la clé et les utiliser pour vous connecter au compte Azure Cosmos DB for NoSQL à l’aide du SDK Azure pour .NET ou de tout autre SDK de votre choix.
+Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge plusieurs API. Quand vous approvisionnez un compte Azure Cosmos DB pour la première fois, vous sélectionnez les API que le compte doit prendre en charge (par exemple l’**API Mongo** ou l’**API NoSQL**). Une fois l’approvisionnement du compte Azure Cosmos DB for NoSQL effectué, vous pouvez récupérer le point de terminaison et la clé, puis les utiliser pour vous connecter au compte Azure Cosmos DB for NoSQL en utilisant le kit Azure SDK pour .NET ou tout autre kit SDK de votre choix.
 
-1. Dans une nouvelle fenêtre ou un nouvel onglet de navigateur web, accédez au Portail Azure (``portal.azure.com``).
+1. Dans une nouvelle fenêtre ou un nouvel onglet du navigateur web, accédez au portail Azure (``portal.azure.com``).
 
 1. Connectez-vous au portail en utilisant les informations d’identification Microsoft associées à votre abonnement.
 
-1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une nouvelle **ressource de compte Azure Cosmos DB for NoSQL** avec les paramètres suivants, en laissant tous les paramètres restants à leurs valeurs par défaut :
+1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une ressource de compte **Azure Cosmos DB for NoSQL** avec les paramètres suivants, en conservant les valeurs par défaut de tous les autres paramètres :
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
     | **Abonnement** | *Votre abonnement Azure existant* |
-    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou créer un groupe de ressources* |
+    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
     | **Lieu** | *Choisissez une région disponible* |
     | **Mode de capacité** | *Débit approvisionné* |
     | **Appliquer la remise de niveau Gratuit** | *Ne pas appliquer* |
 
-    > &#128221; Vos environnements de laboratoire peuvent avoir des restrictions vous empêchant de créer un nouveau groupe de ressources. Si tel est le cas, utilisez le groupe de ressources pré-créé existant.
+    > &#128221; Vos environnements de labo peuvent présenter des restrictions vous empêchant de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
 
-1. Attendez que la tâche de déploiement se termine avant de poursuivre cette tâche.
+1. Attendez la fin de la tâche de déploiement avant de passer à cette tâche.
 
-1. Accédez à la ressource de compte **Azure Cosmos DB** nouvellement créée et accédez au volet **Clés**.
+1. Accédez à la ressource de compte **Azure Cosmos DB** qui vient d’être créée, puis accédez au volet **Clés**.
 
-1. Ce volet contient les informations de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du Kit de développement logiciel (SDK). Plus précisément :
+1. Ce volet contient les détails de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du kit SDK. Plus précisément :
 
-    1. Notez le champ **URI**. Vous utiliserez cette valeur de **point de terminaison** plus tard dans cet exercice.
+    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus tard dans cet exercice.
 
-    1. Notez le champ **PRIMARY KEY**. Vous utiliserez cette valeur **clé** plus tard dans cet exercice.
+    1. Notez le champ **CLÉ PRIMAIRE**. Vous utiliserez cette valeur **key** plus tard dans cet exercice.
 
 1. Revenez à **Visual Studio Code**.
 
 ## Alimenter le compte Azure Cosmos DB for NoSQL avec des données
 
-L'outil de ligne de commande [cosmicworks][nuget.org/packages/cosmicworks] déploie des exemples de données sur n'importe quel compte Azure Cosmos DB for NoSQL. L’outil est open source et disponible via NuGet. Vous allez installer cet outil dans Azure Cloud Shell, puis l’utiliser pour amorçage de votre base de données.
+L’outil de ligne de commande [cosmicworks][nuget.org/packages/cosmicworks] déploie des exemples de données sur n’importe quel compte Azure Cosmos DB for NoSQL. L’outil est open source et disponible avec NuGet. Vous installez cet outil dans Azure Cloud Shell et l’utilisez pour l’amorçage de votre base de données.
 
 1. Dans **Visual Studio Code**, ouvrez le menu **Terminal**, puis sélectionnez **Nouveau terminal** pour ouvrir une nouvelle instance de terminal.
 
-1. Installez l'outil de ligne de commande [cosmicworks][nuget.org/packages/cosmicworks] pour une utilisation globale sur votre machine.
+1. Installez l’outil de ligne de commande [cosmicworks][nuget.org/packages/cosmicworks] pour une utilisation globale sur votre machine.
 
     ```
     dotnet tool install cosmicworks --global --version 1.*
     ```
 
-    > &#128161 ; Cette commande peut prendre quelques minutes. Cette commande affichera le message d'avertissement (*L'outil 'cosmicworks' est déjà installé') si vous avez déjà installé la dernière version de cet outil dans le passé.
+    > &#128161; L’exécution de cette commande peut prendre quelques minutes. Cette commande génère le message d’avertissement (*L’outil « cosmicworks » est déjà installé), si vous avez déjà installé la dernière version de cet outil.
 
-1. Exécutez cosmicworks pour amorcer votre compte Azure Cosmos DB avec les options de ligne de commande suivantes :
+1. Exécutez cosmicworks pour remplir initialement votre compte Azure Cosmos DB avec les options de ligne de commande suivantes :
 
     | **Option** | **Valeur** |
     | ---: | :--- |
-    | **--endpoint** | *Valeur de point de terminaison que vous avez copiée précédemment dans ce labo* |
-    | **--key** | *La valeur clé que vous avez traitée plus tôt dans cet atelier* |
+    | **--endpoint** | *Valeur de point de terminaison que vous avez copiée plus tôt dans ce labo* |
+    | **--key** | *Valeur de clé que vous avez copiée plus tôt dans ce labo* |
     | **--datasets** | *product* |
 
     ```
     cosmicworks --endpoint <cosmos-endpoint> --key <cosmos-key> --datasets product
     ```
 
-    > &#128221; Par exemple, si votre point de terminaison est : **https&shy;://dp420.documents.azure.com:443/** et que votre clé est : **fDR2ci9QgkdkvERTQ==**, la commande serait : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
+    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/** et si votre clé est **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
 
 1. Attendez que la commande **cosmicworks** ait fini de remplir le compte avec une base de données, un conteneur et des éléments.
 
@@ -97,19 +97,19 @@ Lors du traitement des résultats de requête, vous devez vous assurer que votre
 
 1. Ouvrez le fichier de code **product.cs**.
 
-1. Observez la classe **Produit** et ses propriétés correspondantes. Plus précisément, cet atelier utilisera les propriétés **id**, **nom** et **prix**.
+1. Observez la classe **Product** et ses propriétés correspondantes. Plus précisément, ce labo utilisera les propriétés **id**, **name** et **price**.
 
 1. De retour dans le volet **Explorateur** de **Visual Studio Code**, ouvrez le fichier de code **script.cs**.
 
-1. Mettez à jour la variable existante nommée **point de terminaison** avec sa valeur définie sur le **point de terminaison** du compte Azure Cosmos DB que vous avez créé précédemment.
+1. Mettez à jour la variable existante nommée **endpoint** avec sa valeur définie sur le **point de terminaison** du compte Azure Cosmos DB que vous avez créé précédemment.
   
     ```
     string endpoint = "<cosmos-endpoint>";
     ```
 
-    > &#128221; Par exemple, si votre point de terminaison est : **https&shy;://dp420.documents.azure.com:443/**, l'instruction C# serait : **point de terminaison de chaîne = "https&shy;://dp420.documents.azure.com:443/";**.
+    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/**, l’instruction C# est **string endpoint = "https&shy;://dp420.documents.azure.com:443/";**.
 
-1. Mettez à jour la variable existante nommée **clé** avec sa valeur définie sur la **clé** du compte Azure Cosmos DB que vous avez créé précédemment.
+1. Mettez à jour la variable existante nommée **key** avec sa valeur définie sur la **clé** du compte Azure Cosmos DB que vous avez créé précédemment.
 
     ```
     string key = "<cosmos-key>";

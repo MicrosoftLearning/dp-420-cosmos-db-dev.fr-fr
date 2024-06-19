@@ -12,39 +12,39 @@ Dans ce labo, vous allez observer et manipuler la stratégie d’indexation par 
 
 ## Créer un compte Azure Cosmos DB for NoSQL
 
-Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge différentes API. Quand vous approvisionnez un compte Azure Cosmos DB pour la première fois, vous sélectionnez les API que le compte doit prendre en charge (par exemple, l’**API Mongo** ou l’**API NoSQL**). Dès que l’approvisionnement du compte Azure Cosmos DB for NoSQL est terminé, vous pouvez récupérer le point de terminaison et la clé, et les utiliser pour vous connecter au compte Azure Cosmos DB for NoSQL en utilisant le kit Azure SDK pour .NET ou un autre SDK de votre choix.
+Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge plusieurs API. Quand vous approvisionnez un compte Azure Cosmos DB pour la première fois, vous sélectionnez les API que le compte doit prendre en charge (par exemple l’**API Mongo** ou l’**API NoSQL**). Une fois l’approvisionnement du compte Azure Cosmos DB for NoSQL effectué, vous pouvez récupérer le point de terminaison et la clé, puis les utiliser pour vous connecter au compte Azure Cosmos DB for NoSQL en utilisant le kit Azure SDK pour .NET ou tout autre kit SDK de votre choix.
 
 1. Dans une nouvelle fenêtre ou un nouvel onglet du navigateur web, accédez au portail Azure (``portal.azure.com``).
 
 1. Connectez-vous au portail en utilisant les informations d’identification Microsoft associées à votre abonnement.
 
-1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une ressource de compte **Azure Cosmos DB for NoSQL** avec les paramètres suivants, en laissant tous les autres paramètres avec leurs valeurs par défaut :
+1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une ressource de compte **Azure Cosmos DB for NoSQL** avec les paramètres suivants, en conservant les valeurs par défaut de tous les autres paramètres :
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
     | **Abonnement** | *Votre abonnement Azure existant* |
-    | **Groupe de ressources** | *Sélectionner un groupe de ressources ou en créer un* |
+    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
     | **Lieu** | *Choisissez une région disponible* |
     | **Mode de capacité** | *Débit approvisionné* |
     | **Appliquer la remise de niveau Gratuit** | *Ne pas appliquer* |
 
-    > &#128221; Vos environnements de labo peuvent avoir des restrictions qui vous empêchent de créer un groupe de ressources. Si c’est le cas, utilisez le groupe de ressources pré-créé existant.
+    > &#128221; Vos environnements de labo peuvent présenter des restrictions vous empêchant de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
 
 1. Attendez la fin de la tâche de déploiement avant de passer à cette tâche.
 
-1. Accédez à la ressource de compte **Azure Cosmos DB** nouvellement créée, puis au volet **Clés**.
+1. Accédez à la ressource de compte **Azure Cosmos DB** qui vient d’être créée, puis accédez au volet **Clés**.
 
-1. Ce volet contient les détails de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du SDK. Plus précisément :
+1. Ce volet contient les détails de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du kit SDK. Plus précisément :
 
-    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus loin dans cet exercice.
+    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus tard dans cet exercice.
 
     1. Notez le champ **CLÉ PRIMAIRE**. Vous utiliserez cette valeur **key** plus tard dans cet exercice.
 
 
 ## Alimenter le compte Azure Cosmos DB for NoSQL avec des données
 
-L'outil de ligne de commande [cosmicworks][nuget.org/packages/cosmicworks] déploie des exemples de données sur n'importe quel compte Azure Cosmos DB for NoSQL. L’outil est open source et disponible avec NuGet. Vous installez cet outil dans Azure Cloud Shell et l’utilisez pour l’amorçage de votre base de données.
+L’outil de ligne de commande [cosmicworks][nuget.org/packages/cosmicworks] déploie des exemples de données sur n’importe quel compte Azure Cosmos DB for NoSQL. L’outil est open source et disponible avec NuGet. Vous installez cet outil dans Azure Cloud Shell et l’utilisez pour l’amorçage de votre base de données.
 
 1. Démarrez **Visual Studio Code**.
 
@@ -58,13 +58,13 @@ L'outil de ligne de commande [cosmicworks][nuget.org/packages/cosmicworks] dépl
     dotnet tool install cosmicworks --global --version 1.*
     ```
   
-    > &#128161; Cette commande peut prendre quelques minutes. Cette commande affiche le message d’avertissement (*L’outil 'cosmicworks' est déjà installé) si vous aviez déjà installé la dernière version de l’outil.
+    > &#128161; L’exécution de cette commande peut prendre quelques minutes. Cette commande génère le message d’avertissement (*L’outil « cosmicworks » est déjà installé), si vous avez déjà installé la dernière version de cet outil.
 
-1. Exécutez cosmicworks pour amorcer votre compte Azure Cosmos DB avec les options de ligne de commande suivantes :
+1. Exécutez cosmicworks pour remplir initialement votre compte Azure Cosmos DB avec les options de ligne de commande suivantes :
 
     | **Option** | **Valeur** |
     | ---: | :--- |
-    | **--endpoint** | *Valeur de point de terminaison que vous avez copiée précédemment dans ce labo* |
+    | **--endpoint** | *Valeur de point de terminaison que vous avez copiée plus tôt dans ce labo* |
     | **--key** | *Valeur de clé que vous avez copiée plus tôt dans ce labo* |
     | **--datasets** | *product* |
 
@@ -72,7 +72,7 @@ L'outil de ligne de commande [cosmicworks][nuget.org/packages/cosmicworks] dépl
     cosmicworks --endpoint <cosmos-endpoint> --key <cosmos-key> --datasets product
     ```
 
-    > &#128221; Par exemple, si votre point de terminaison est : **https&shy;://dp420.documents.azure.com:443/** et que votre clé est : **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
+    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/** et si votre clé est **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
 
 1. Attendez que la commande **cosmicworks** ait fini de remplir le compte avec une base de données, un conteneur et des éléments.
 
@@ -92,7 +92,7 @@ Lorsqu’un conteneur est créé avec du code, le portail ou un outil, la strat�
 
 1. Supprimez le contenu de la zone de l’éditeur.
 
-1. Créez une requête SQL qui retourne tous les documents où le **nom** équivaut à **HL Headset** :
+1. Créez une requête SQL qui retourne tous les documents où le **name** est équivalent à **HL Headset** :
 
     ```
     SELECT * FROM p WHERE p.name = 'HL Headset'
@@ -156,7 +156,7 @@ Lorsqu’un conteneur est créé avec du code, le portail ou un outil, la strat�
 
 1. Supprimez le contenu de la zone de l’éditeur.
 
-1. Créez une requête SQL qui retourne tous les documents où le **nom** équivaut à **HL Headset** :
+1. Créez une requête SQL qui retourne tous les documents où le **name** est équivalent à **HL Headset** :
 
     ```
     SELECT * FROM p WHERE p.name = 'HL Headset'

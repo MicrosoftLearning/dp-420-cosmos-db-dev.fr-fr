@@ -20,35 +20,35 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
 
 1. Connectez-vous au portail en utilisant les informations d’identification Microsoft associées à votre abonnement.
 
-1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une nouvelle ressource de compte **Azure Cosmos DB for NoSQL** avec les paramètres suivants, en laissant tous les paramètres restants à leurs valeurs par défaut :
+1. Sélectionnez **+ Créer une ressource**, recherchez *Cosmos DB*, puis créez une ressource de compte **Azure Cosmos DB for NoSQL** avec les paramètres suivants, en conservant les valeurs par défaut de tous les autres paramètres :
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
     | **Abonnement** | *Votre abonnement Azure existant* |
-    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un nouveau* |
+    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
     | **Lieu** | *Choisissez une région disponible* |
     | **Mode de capacité** | *Débit approvisionné* |
     | **Appliquer la remise de niveau Gratuit** | *Ne pas appliquer* |
     | **Limiter la quantité totale de débit pouvant être approvisionnée sur ce compte** | *Décoché* |
 
-    > &#128221; Vos environnements de laboratoire peuvent avoir des restrictions vous empêchant de créer un nouveau groupe de ressources. Si tel est le cas, utilisez le groupe de ressources pré-créé existant.
+    > &#128221; Vos environnements de labo peuvent présenter des restrictions vous empêchant de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
 
-1. Attendez que la tâche de déploiement se termine avant de poursuivre.
+1. Attendez la fin de la tâche de déploiement avant de passer à cette tâche.
 
-1. Accédez à la ressource de compte **Azure Cosmos DB** nouvellement créée et accédez au volet **Clés**.
+1. Accédez à la ressource de compte **Azure Cosmos DB** qui vient d’être créée, puis accédez au volet **Clés**.
 
-1. Ce volet contient les informations de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du Kit de développement logiciel (SDK). Plus précisément :
+1. Ce volet contient les détails de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du kit SDK. Plus précisément :
 
-    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus loin dans cet exercice.
+    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus tard dans cet exercice.
 
-    1. Remarquez le champ **PRIMARY KEY**. Vous utiliserez cette valeur **key** plus loin dans cet exercice.
+    1. Notez le champ **CLÉ PRIMAIRE**. Vous utiliserez cette valeur de **clé** plus tard dans cet exercice.
 
 1. Gardez l’onglet du navigateur ouvert, car nous y retournerons ultérieurement.
 
 1. Démarrez **Visual Studio Code**.
 
-    > &#128221; Si vous n’êtes pas déjà familier avec l’interface de Visual Studio Code, consultez le [guide de démarrage de Visual Studio Code][code.visualstudio.com/docs/getstarted]
+    > &#128221; Si vous n’êtes pas encore familiarisé avec l’interface de Visual Studio Code, consultez le [Guide de démarrage de Visual Studio Code][code.visualstudio.com/docs/getstarted]
 
 1. Dans **Visual Studio Code**, ouvrez le menu **Terminal**, puis sélectionnez **Nouveau terminal** pour ouvrir une nouvelle instance de terminal.
 
@@ -58,9 +58,9 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
     dotnet tool install cosmicworks --global --version 1.*
     ```
 
-    > &#128161; Cette commande peut prendre quelques minutes. Cette commande générera le message d’avertissement (*L’outil « cosmicworks » est déjà installé) si vous avez déjà installé la dernière version de cet outil dans le passé.
+    > &#128161; L’exécution de cette commande peut prendre quelques minutes. Cette commande génère le message d’avertissement (*L’outil « cosmicworks » est déjà installé), si vous avez déjà installé la dernière version de cet outil.
 
-1. Exécutez cosmicworks pour amorcer votre compte Azure Cosmos DB avec les options de ligne de commande suivantes :
+1. Exécutez cosmicworks pour remplir initialement votre compte Azure Cosmos DB avec les options de ligne de commande suivantes :
 
     | **Option** | **Valeur** |
     | ---: | :--- |
@@ -72,9 +72,9 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
     cosmicworks --endpoint <cosmos-endpoint> --key <cosmos-key> --datasets product
     ```
 
-    > &#128221; Par exemple, si votre point de terminaison est : **https&shy;://dp420.documents.azure.com:443/** et votre clé est :** fDR2ci9QgkdkvERTQ==**, alors la commande sera : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
+    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/** et si votre clé est **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
 
-1. Attendez que la commande **cosmicworks** termine le remplissage du compte avec une base de données, un conteneur et des éléments.
+1. Attendez que la commande **cosmicworks** ait fini de remplir le compte avec une base de données, un conteneur et des éléments.
 
 1. Fermez le terminal intégré.
 
@@ -96,7 +96,7 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
 
     | **Paramètre** | **Valeur** |
     | --: | :-- |
-    | **ID de base de données** | *Utiliser existant* &vert; *cosmicworks* |
+    | **ID de base de données** | *Utilisez la valeur existante* &vert; *cosmicworks* |
     | **ID de conteneur** | *`flatproducts`* |
     | **Clé de partition** | *`/category`* |
     | **Débit du conteneur (mise à l’échelle automatique)** | *Manuel* |
@@ -115,13 +115,13 @@ Maintenant que les ressources Azure Cosmos DB pour NoSQL sont en place, vous cr�
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
     | **Abonnement** | *Votre abonnement Azure existant* |
-    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un nouveau* |
+    | **Groupe de ressources** | *Sélectionnez un groupe de ressources existant, ou créez un groupe de ressources* |
     | **Nom** | *Entrez un nom globalement unique* |
     | **Région** | *Choisissez une région disponible* |
     | **Version** | *V2* |
     | **Configuration Git** | *Configurer Git plus tard* |
 
-    > &#128221; Vos environnements de laboratoire peuvent avoir des restrictions vous empêchant de créer un nouveau groupe de ressources. Si tel est le cas, utilisez le groupe de ressources pré-créé existant.
+    > &#128221; Vos environnements de laboratoire peuvent avoir des restrictions vous empêchant de créer un nouveau groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
 
 1. Attendez que la tâche de déploiement se termine avant de poursuivre.
 

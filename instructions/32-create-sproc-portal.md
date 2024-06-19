@@ -23,13 +23,13 @@ Les procédures stockées sont créées en JavaScript intégré au langage et pr
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
     | **Abonnement** | *Votre abonnement Azure existant* |
-    | **Groupe de ressources** | *Sélectionner un groupe de ressources ou en créer un* |
+    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
     | **Lieu** | *Choisissez une région disponible* |
     | **Mode de capacité** | *Débit approvisionné* |
     | **Appliquer la remise de niveau Gratuit** | *Ne pas appliquer* |
 
-    > &#128221; Vos environnements de labo peuvent avoir des restrictions qui vous empêchent de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources précréé existant.
+    > &#128221; Vos environnements de labo peuvent présenter des restrictions vous empêchant de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
 
 1. Attendez que la tâche de déploiement se termine avant de poursuivre.
 
@@ -126,7 +126,7 @@ Les procédures stockées sont créées en JavaScript intégré au langage et pr
 
 ## Implémenter les meilleures pratiques pour une procédure stockée
 
-Bien que la procédure stockée créée précédemment dans ce laboratoire dispose de fonctionnalités de base, elle manque également de certaines techniques de gestion des erreurs courantes qui doivent être implémentées dans toutes les procédures stockées. Tout d’abord, la procédure stockée suppose qu’elle aura toujours le temps d’effectuer l’opération et ne vérifie pas la valeur renvoyée de la méthode **createDocument** pour s’assurer qu’elle a suffisamment de temps. Ensuite, la procédure stockée part du principe que tous les documents sont correctement insérés sans vérifier ou lever des messages d’erreur potentiels. Enfin, la procédure stockée ne retourne pas le document nouvellement créé comme réponse HTTP pour la requête qui a appelé la procédure stockée à l’origine. Vous allez apporter ces trois modifications à la procédure stockée pour implémenter les meilleures pratiques courantes.
+Bien que la procédure stockée créée précédemment dans ce laboratoire dispose de fonctionnalités de base, elle manque également de certaines techniques courantes de gestion des erreurs courantes qui doivent être implémentées dans toutes les procédures stockées. Tout d’abord, la procédure stockée suppose qu’elle aura toujours le temps d’effectuer l’opération et ne vérifie pas la valeur renvoyée de la méthode **createDocument** pour s’assurer qu’elle a suffisamment de temps. Ensuite, la procédure stockée part du principe que tous les documents sont correctement insérés sans vérifier ou lever des messages d’erreur potentiels. Enfin, la procédure stockée ne retourne pas le document nouvellement créé comme réponse HTTP pour la requête qui a appelé la procédure stockée à l’origine. Vous allez apporter ces trois modifications à la procédure stockée pour implémenter les meilleures pratiques courantes.
 
 1. Revenez à l’éditeur pour la procédure stockée **createDoc**.
 

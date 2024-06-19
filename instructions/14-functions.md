@@ -12,9 +12,9 @@ Dans ce labo, vous allez effectuer les tâches suivantes :
 
 ## Créer un compte Azure Cosmos DB for NoSQL
 
-Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud, qui prend en charge plusieurs API. Quand vous approvisionnez un compte Azure Cosmos DB pour la première fois, vous sélectionnez les API que le compte doit prendre en charge (par exemple l’**API Mongo** ou l’**API NoSQL**). Une fois l’approvisionnement du compte Azure Cosmos DB for NoSQL effectué, vous pouvez récupérer le point de terminaison et la clé, et les utiliser pour vous connecter au compte Azure Cosmos DB for NoSQL en utilisant le kit Azure SDK pour .NET ou tout autre kit SDK de votre choix.
+Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui prend en charge plusieurs API. Quand vous approvisionnez un compte Azure Cosmos DB pour la première fois, vous sélectionnez les API que le compte doit prendre en charge (par exemple l’**API Mongo** ou l’**API NoSQL**). Une fois l’approvisionnement du compte Azure Cosmos DB for NoSQL effectué, vous pouvez récupérer le point de terminaison et la clé, puis les utiliser pour vous connecter au compte Azure Cosmos DB for NoSQL en utilisant le kit Azure SDK pour .NET ou tout autre kit SDK de votre choix.
 
-1. Dans une nouvelle fenêtre ou un nouvel onglet de navigateur web, accédez au portail Azure (``portal.azure.com``).
+1. Dans une nouvelle fenêtre ou un nouvel onglet du navigateur web, accédez au portail Azure (``portal.azure.com``).
 
 1. Connectez-vous au portail en utilisant les informations d’identification Microsoft associées à votre abonnement.
 
@@ -23,12 +23,12 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud, qui
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
     | **Abonnement** | *Votre abonnement Azure existant* |
-    | **Groupe de ressources** | *Sélectionnez un groupe de ressources existant, ou créez un groupe de ressources* |
+    | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
     | **Lieu** | *Choisissez une région disponible* |
     | **Mode de capacité** | *Sans serveur* |
 
-    > &#128221; Vos environnements lab peuvent présenter des restrictions qui vous empêchent de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
+    > &#128221; Vos environnements de labo peuvent présenter des restrictions qui vous empêchent de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
 
 1. Attendez la fin de la tâche de déploiement avant de passer à cette tâche.
 
@@ -36,15 +36,15 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud, qui
 
 1. Ce volet contient les détails de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du kit SDK. Plus précisément :
 
-    1. Notez le champ **URI**. Vous utiliserez cette valeur de **point de terminaison** plus tard dans cet exercice.
+    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus tard dans cet exercice.
 
-    1. Notez le champ **PRIMARY KEY**. Vous utiliserez cette valeur de **clé** plus tard dans cet exercice.
+    1. Notez le champ **CLÉ PRIMAIRE**. Vous utiliserez cette valeur de **clé** plus tard dans cet exercice.
 
 1. Dans le menu de ressource, sélectionnez **Explorateur de données**.
 
 1. Dans le volet **Explorateur de données**, développez **Nouveau conteneur**, puis sélectionnez **Nouvelle base de données**.
 
-1. Dans la fenêtre indépendante **Nouvelle base de données**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
+1. Dans la fenêtre contextuelle **Nouvelle base de données**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
 
     | **Paramètre** | **Valeur** |
     | --: | :-- |
@@ -54,7 +54,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud, qui
 
 1. Dans le volet **Explorateur de données**, sélectionnez **Nouveau conteneur**.
 
-1. Dans la fenêtre indépendante **Nouveau conteneur**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
+1. Dans la fenêtre contextuelle **Nouveau conteneur**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
 
     | **Paramètre** | **Valeur** |
     | --: | :-- |
@@ -66,7 +66,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud, qui
 
 1. Dans le volet **Explorateur de données**, sélectionnez une nouvelle fois **Nouveau conteneur**.
 
-1. Dans la fenêtre indépendante **Nouveau conteneur**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
+1. Dans la fenêtre contextuelle **Nouveau conteneur**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
 
     | **Paramètre** | **Valeur** |
     | --: | :-- |
@@ -239,7 +239,7 @@ La fonction que vous avez créée est un script C# qui est modifié dans le port
 
 ## Remplir initialement votre compte Azure Cosmos DB for NoSQL avec des exemples de données
 
-Vous allez vous servir d’un utilitaire en ligne de commande, qui crée une base de données **cosmicworks** et un conteneur **products**. L’outil crée ensuite un ensemble d’éléments que vous allez observer à l’aide du processeur de flux de modification qui s’exécute dans votre fenêtre de terminal.
+Vous allez vous servir d’un utilitaire en ligne de commande qui crée une base de données **cosmicworks** et un conteneur **products**. L’outil crée ensuite un ensemble d’éléments que vous allez observer à l’aide du processeur de flux de modification qui s’exécute dans votre fenêtre de terminal.
 
 1. Démarrez **Visual Studio Code**.
 
@@ -253,7 +253,7 @@ Vous allez vous servir d’un utilitaire en ligne de commande, qui crée une bas
     dotnet tool install cosmicworks --global --version 1.*
     ```
 
-    > &#128161; L’exécution de cette commande peut prendre quelques minutes. Cette commande génère le message d’avertissement (*L’outil « cosmicworks » est déjà installé), si vous avez déjà installé la dernière version de cet outil.
+    > &#128161; L’exécution de cette commande peut prendre quelques minutes. Cette commande génère le message d’avertissement (*L’outil « cosmicworks » est déjà installé), si vous avez déjà installé la dernière version de cet outil.
 
 1. Exécutez cosmicworks pour remplir initialement votre compte Azure Cosmos DB avec les options de ligne de commande suivantes :
 
@@ -267,7 +267,7 @@ Vous allez vous servir d’un utilitaire en ligne de commande, qui crée une bas
     cosmicworks --endpoint <cosmos-endpoint> --key <cosmos-key> --datasets product
     ```
 
-    > &#128221; Par exemple, si votre point de terminaison est : **https&shy;://dp420.documents.azure.com:443/** et si votre clé est : **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
+    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/** et si votre clé est **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
 
 1. Attendez que la commande **cosmicworks** ait fini de remplir le compte avec une base de données, un conteneur et des éléments.
 

@@ -10,15 +10,15 @@ Dans cet exercice, vous allez mesurer la différence pour les entités relatives
 
 ## Préparer votre environnement de développement
 
-Si vous n’avez pas encore cloné le dépôt de code du labo pour le cours **DP-420** dans l'environnement où vous travaillez, suivez ces étapes. Sinon, ouvrez le dossier précédemment cloné dans **Visual Studio Code**.
+Si vous n’avez pas encore cloné le référentiel de code du labo pour le cours **DP-420** dans l’environnement utilisé, suivez ces étapes. Sinon, ouvrez le dossier précédemment cloné dans **Visual Studio Code**.
 
 1. Démarrez **Visual Studio Code**.
 
-    > &#128221; Si vous n'êtes pas familiarisé avec l’interface de Visual Studio Code, consultez le [Guide de démarrage de Visual Studio Code][code.visualstudio.com/docs/getstarted]
+    > &#128221; Si vous n’êtes pas encore familiarisé avec l’interface de Visual Studio Code, consultez le [guide de démarrage de Visual Studio Code][code.visualstudio.com/docs/getstarted]
 
-1. Ouvrez la palette de commandes et exécutez **Git: Clone** pour cloner le dépôt GitHub ``https://github.com/microsoftlearning/dp-420-cosmos-db-dev`` dans le dossier local de votre choix.
+1. Ouvrez la palette de commandes et exécutez **Git : Cloner** pour cloner le référentiel GitHub ``https://github.com/microsoftlearning/dp-420-cosmos-db-dev`` dans un dossier local de votre choix.
 
-    > &#128161; Vous pouvez utiliser le raccourci clavier **Ctrl+Maj+P** pour ouvrir la palette de commandes.
+    > &#128161; Vous pouvez utiliser le raccourci clavier **Ctrl + Maj + P** pour ouvrir la palette de commandes.
 
 1. Une fois le dépôt cloné, ouvrez le dossier local que vous avez sélectionné dans **Visual Studio Code**.
 
@@ -30,20 +30,26 @@ Si vous n’avez pas encore cloné le dépôt de code du labo pour le cours **DP
 
     > &#128161; Pour ouvrir un terminal **Git Bash**, à droite du menu du terminal, cliquez sur la liste déroulante à côté du signe **+** et choisissez *Git Bash*.
 
-1. Dans le **terminal Git Bash**, exécutez les commandes suivantes. Les commandes ouvrent une fenêtre de navigateur pour vous connecter au portail Azure où vous utilisez les informations d’identification de labo fournies, exécutez un script qui crée un compte Azure Cosmos DB, puis générez et démarrez l’application que vous utilisez pour remplir la base de données et effectuer les exercices. *Une fois que vous avez entré les informations d’identification fournies pour le compte Azure, la génération peut durer entre 15 et 20 minutes*.
+1. Dans le **terminal Git Bash**, exécutez les commandes suivantes. Les commandes ouvrent une fenêtre de navigateur pour vous connecter au portail Azure où vous utiliserez les informations d’identification du labo fournies.
 
     ```
     "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
     az login
     cd 16-measure-performance
-    bash init.sh
     dotnet add package Microsoft.Azure.Cosmos --version 3.22.1
+
+    ```
+    > &#128161; Si vous avez exécuté le labo**Coût de dénormalisation des données** en premier et que vous n’avez pas supprimé les ressources Azure créées par ce labo, fermez le terminal intégré, ignorez l’étape suivante et passez à la section suivante. Notez que si vous disposez déjà des ressources créées par le labo **Coût de dénormalisation des données**, et que vous essayez d’exécuter le script ci-dessous, le script échoue.
+
+1. Dans le **terminal Git Bash**, exécutez les commandes suivantes. Les commandes exécutent un script qui crée un compte Azure Cosmos DB, puis créent et démarrent l’application que vous utilisez pour remplir la base de données et effectuer les exercices. *Une fois que vous avez entré les informations d’identification fournies pour le compte Azure, la génération peut durer entre 15 et 20 minutes*.
+
+    ```
+    bash init.sh
     dotnet build
     dotnet run --load-data
     echo "Data load process completed."
 
     ```
-
 1. Fermez le terminal intégré.
 
 ## Mesurer les performances des entités dans des conteneurs distincts
@@ -140,5 +146,9 @@ Nous allons à présent demander les mêmes informations, mais avec nos entités
 Si vous comparez les RU/s de chacune des requêtes que vous avez exécutées, vous pouvez constater que la dernière requête, dans laquelle les entités Customer se trouvent dans un document unique, entraîne un coût beaucoup moins élevé que celui de l’exécution de trois requêtes indépendantes. La latence observée lors du retour de ces données est plus faible, car les données sont retournées en une seule opération.
 
 Lorsque vous recherchez un seul élément et que vous connaissez la clé de partition et l’ID des données, vous pouvez récupérer ces données via un *point de lecture* en appelant `ReadItemAsync()` dans le kit de développement logiciel (SDK) Azure Cosmos DB. Le point de lecture est encore plus rapide que notre requête. Pour les mêmes données client, le coût est simplement de 1 RU/s, soit trois fois moins élevé.
+
+## Nettoyage
+
+Supprimez le groupe de ressources créé dans ce labo.  Si vous n’avez pas l’accès pour supprimer le groupe de ressources, supprimez tous les objets Azure créés par ce labo.
 
 [code.visualstudio.com/docs/getstarted]: https://code.visualstudio.com/docs/getstarted/tips-and-tricks
