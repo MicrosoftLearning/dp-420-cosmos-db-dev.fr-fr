@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Examiner la stratégie d’indexation par défaut pour un conteneur Azure Cosmos DB for NoSQL avec le portail
+  title: Configurer la stratégie d’indexation d’un conteneur Azure Cosmos DB for NoSQL avec le kit de développement logiciel (SDK)
   module: Module 6 - Define and implement an indexing strategy for Azure Cosmos DB for NoSQL
 ---
 
