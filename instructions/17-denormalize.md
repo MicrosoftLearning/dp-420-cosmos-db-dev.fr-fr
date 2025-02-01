@@ -37,7 +37,6 @@ Si vous n’avez pas encore cloné le référentiel de code du labo pour le cour
     ```
     "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
     az login
-    cd 17-denormalize
     dotnet add package Microsoft.Azure.Cosmos --version 3.22.1
     ```
 
@@ -103,6 +102,8 @@ Ensuite, interrogez le conteneur product pour obtenir tous les produits de la ca
 
     ![Capture d’écran de l’Explorateur de données d’Azure Cosmos DB qui montre les résultats de la requête sur le conteneur product.](media/16-product-results.png)
 
+   > **Note** : vous pouvez observer une charge de requête légèrement différente de ce qui est indiqué dans cet exercice, avec une marge de +/- 0,1.
+
 ### Obtenir les étiquettes de chaque produit
 
 Interrogez ensuite le conteneur productTag trois fois, une fois pour chacun des trois produits : HL Headset, LL Headset et ML Headset.
@@ -139,7 +140,7 @@ Ensuite, exécutez une requête pour renvoyer les étiquettes de LL Headset.
 
     Cette requête renvoie les cinq étiquettes du produit LL Headset.
 
-1. Sélectionnez l’onglet **Statistiques des requêtes** et remarquez les frais de requête de 3,45 RU.
+1. Sélectionnez **Statistiques des requêtes** et remarquez que les frais de demande s’élèvent à 3,47 RU.
 
     ![Capture d’écran des résultats de la requête sur le conteneur productTag pour les statistiques de requête du produit « LL Headset ».](media/16-product-tag-ll-stats.png)
 
@@ -157,7 +158,7 @@ Enfin, exécutez une requête pour renvoyer les étiquettes de ML Headset.
 
     Cette requête renvoie les trois étiquettes du produit ML Headset.
 
-1. Sélectionnez l’onglet **Statistiques des requêtes** et remarquez les frais de requête de 3,19 RU.
+1. Sélectionnez **Statistiques des requêtes** et remarquez que les frais de demande s’élèvent à 3,2 RU.
 
     ![Capture d’écran des résultats de notre requête sur le conteneur productTag pour les statistiques de requête du produit « ML Headset ».](media/16-product-tag-ml-stats.png)
 
@@ -170,9 +171,9 @@ Enfin, exécutez une requête pour renvoyer les étiquettes de ML Headset.
 |Nom de la catégorie|2.92|
 |Produit|2.89|
 |Étiquettes de produit HL|3,06|
-|Étiquettes de produit LL|3.45|
-|Étiquettes de produit ML|3,19|
-|**Coût total en RU**|**15,51**|
+|Étiquettes de produit LL|3.47|
+|Étiquettes de produit ML|3,20|
+|**Coût total en RU**|**15,54**|
 
 ### Exécuter les mêmes requêtes pour votre conception NoSQL
 
