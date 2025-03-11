@@ -85,7 +85,7 @@ Le fournisseur de ressources **Microsoft.DocumentDB** dans Azure Resource Manage
 
     ```
     $CurrentDirectory=$pwd
-    CD "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\"
+    CD "C:\Program Files\Microsoft SDKs\Azure\CLI2\"
     .\python.exe -m pip install pip-system-certs
     CD $CurrentDirectory
     ```
@@ -110,7 +110,7 @@ Le fournisseur de ressources **Microsoft.DocumentDB** dans Azure Resource Manage
 
 1. (Facultatif) ***Si aucun groupe de ressources n’a été créé pour vous***, choisissez un nom de groupe de ressources et créez-le. *Notez que certains environnements de labo risquent d’être verrouillés et que vous aurez besoin d’un administrateur pour créer le groupe de ressources pour vous.*
 
-    i. Choisir le nom de l’emplacement le plus proche dans cette liste
+    i. Choisissez le nom de l’emplacement le plus proche de vous dans cette liste.
 
     ```
     az account list-locations --query "sort_by([].{YOURLOCATION:name, DisplayName:regionalDisplayName}, &YOURLOCATION)" --output table

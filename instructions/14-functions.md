@@ -8,7 +8,7 @@ lab:
 
 Le déclencheur Azure Cosmos DB pour Azure Functions est implémenté à l’aide d’un processeur de flux de modification. Grâce à ces connaissances, vous pouvez créer des fonctions qui répondent aux opérations de création et de mise à jour dans votre conteneur Azure Cosmos DB for NoSQL. Si vous avez implémenté manuellement un processeur de flux de modification, la configuration d’Azure Functions est similaire.
 
-Dans ce labo, vous allez effectuer les tâches suivantes :
+Dans ce labo, vous allez créer une application de fonction, ainsi que toutes ses ressources nécessaires, qui va surveiller votre base de données et journaliser chaque opération détectée dans celle-ci.
 
 ## Créer un compte Azure Cosmos DB for NoSQL
 
@@ -115,7 +115,7 @@ Vous devez désormais pouvoir effectuer un monitoring de vos fonctions d’appli
 
 Pour pouvoir commencer à écrire du code, vous devez créer au préalable la ressource Azure Functions et ses ressources dépendantes (Application Insights, Stockage) à l’aide de l’Assistant Création.
 
-1. Sélectionnez **+ Créer une ressource**, recherchez *Functions*, puis créez une ressource de compte **Application de fonction** avec les paramètres suivants, en conservant les valeurs par défaut de tous les autres paramètres :
+1. Sélectionnez **+ Créer une ressource**, recherchez *Fonctions*, puis créez une ressource de compte **Application de fonction**. Sélectionnez **Consommation** comme option d’hébergement et configurez l’application avec les paramètres suivants, en laissant tous les autres paramètres sur leurs valeurs par défaut :
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
@@ -124,7 +124,7 @@ Pour pouvoir commencer à écrire du code, vous devez créer au préalable la re
     | **Nom** | *Entrez un nom globalement unique* |
     | **Publier** | *Code* |
     | **Pile d’exécution** | *.NET* |
-    | **Version** | *6 (LTS) In-process* |
+    | **Version** | *8 (LTS) In-process* |
     | **Région** | *Choisissez une région disponible* |
     | **Compte de stockage** | *Créer un compte de stockage* |
 
@@ -132,17 +132,14 @@ Pour pouvoir commencer à écrire du code, vous devez créer au préalable la re
 
 1. Attendez la fin de la tâche de déploiement avant de passer à cette tâche.
 
-1. Accédez à la ressource de compte **Azure Functions** qui vient d’être créée, puis accédez au volet **Fonctions**.
-
-1. Dans le volet **Fonctions**, sélectionnez **+ Créer**.
+1. Accédez à la ressource de compte **Azure Functions** nouvellement créée et, sur la page de vue d’ensemble, sélectionnez **Créer une fonction**.
 
 1. Dans la fenêtre indépendante **Créer une fonction**, créez une fonction avec les paramètres suivants, en conservant les valeurs par défaut de tous les autres paramètres :
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
-    | **Environnement de développement** | *Développer dans le portail* |
     | **Sélectionner un modèle** | *Déclencheur Azure Cosmos DB* |
-    | **Nouvelle fonction** | *``ItemsListener``* |
+    | **Nom de la fonction** | *``ItemsListener``* |
     | **Connexion au compte Cosmos DB** | *Sélectionnez Nouveau* &vert; *Sélectionnez Compte Azure Cosmos DB* &vert; *Sélectionnez le compte Azure Cosmos DB que vous avez créé* |
     | **Nom de la base de données** | *``cosmicworks``* |
     | **Nom de la collection** | *``products``* |
@@ -153,9 +150,7 @@ Pour pouvoir commencer à écrire du code, vous devez créer au préalable la re
 
 La fonction que vous avez créée est un script C# qui est modifié dans le portail. Vous allez à présent utiliser le portail pour écrire une fonction courte permettant de générer l’identificateur unique d’un élément inséré ou mis à jour dans le conteneur.
 
-1. Dans le volet **ItemsListener** &vert; **Fonction**, accédez au volet **Code + test**.
-
-1. Dans l’éditeur du script **run.csx**, supprimez le contenu de la zone de l’éditeur.
+1. Dans le volet **ItemsListener**&vert;**Coder + Tester**, accédez à l’éditeur pour le script **run.csx** et supprimez son contenu.
 
 1. Dans la zone de l’éditeur, référencez la bibliothèque **Microsoft.Azure.DocumentDB.Core** :
 
@@ -223,7 +218,7 @@ La fonction que vous avez créée est un script C# qui est modifié dans le port
     }
     ```
 
-1. Développez la section **Journaux** pour vous connecter aux journaux en streaming de la fonction actuelle.
+1. Développez la section **Journaux** en bas de la page, développez également **Journaux App Insights**, puis sélectionnez **Journaux du système de fichiers** pour vous connecter aux journaux de diffusion en continu pour la fonction active.
 
     > &#128161; La connexion au service de journaux en streaming peut prendre quelques secondes. Un message s’affiche dans la sortie des journaux une fois que vous êtes connecté.
 

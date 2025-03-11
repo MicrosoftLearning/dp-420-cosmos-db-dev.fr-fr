@@ -214,7 +214,7 @@ Le reste du code est simple : obtenir la chaîne de connexion, se connecter à A
 
 1. Sélectionnez un groupe de ressources existant ou créez-en un si nécessaire.
 
-1. Sélectionnez **.NET 6 (LTS)**.
+1. Sélectionnez **.NET 8 (LTS)**.
 
 1. Sélectionnez **Windows**.
 
