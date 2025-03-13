@@ -203,14 +203,15 @@ Maintenant que votre vue matérialisée des données Azure Cosmos DB for NoSQL s
 1. Notez, dans l’**Éditeur de requête JSON**, la syntaxe de la requête de recherche JSON par défaut qui retourne tous les résultats possibles à l’aide d’un opérateur **\*** (générique).
 
    ```json
-   {
-       "search": "*"
-   }
+    {
+      "search": "*",
+      "count": true
+    }
    ```
 
 1. Sélectionnez le bouton **Rechercher** pour effectuer la recherche.
 
-1. Remarquez que cette requête de recherche retourne tous les résultats possibles.
+1. Notez que cette requête de recherche retourne tous les résultats possibles et inclut également un champ de métadonnées qui indique le nombre total de résultats, même s’ils ne sont pas tous inclus sur la même page.
 
 1. Dans l’**Éditeur de requête JSON**, entrez la requête suivante, puis sélectionnez **Rechercher** :
 
@@ -221,17 +222,6 @@ Maintenant que votre vue matérialisée des données Azure Cosmos DB for NoSQL s
     ```
 
 1. Notez que cette requête de recherche retourne des résultats qui contiennent soit le terme **touring** soit le terme **3000**, en donnant un score plus élevé aux résultats qui contiennent les deux termes. Les résultats sont ensuite triés en ordre décroissant par le champ **@search.score**.
-
-1. Dans l’**Éditeur de requête JSON**, entrez la requête suivante, puis sélectionnez **Rechercher** :
-
-    ```json
-    {
-        "search": "red"
-        , "count": true
-    }
-    ```
-
-1. Remarquez que cette requête de recherche retourne les résultats avec le terme **red**, mais inclut également un champ de métadonnées indiquant le nombre total de résultats même s’ils ne sont pas tous inclus dans la même page.
 
 1. Dans l’**Éditeur de requête JSON**, entrez la requête suivante, puis sélectionnez **Rechercher** :
 
