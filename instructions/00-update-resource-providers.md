@@ -18,8 +18,6 @@ Certains fournisseurs de ressources doivent être inscrits dans votre abonnement
 
 1. Sélectionnez votre abonnement Azure.
 
-    > &#128221; Si vous avez plusieurs abonnements, sélectionnez celui que vous avez créé en échangeant votre Pass Azure.
-
 1. Dans le panneau de votre abonnement, dans la section **Paramètres**, sélectionnez **Fournisseurs de ressources**.
 
 1. Dans la liste des fournisseurs de ressources, vérifiez que les fournisseurs suivants sont inscrits :
