@@ -1,11 +1,7 @@
 ---
-title: Activer les fournisseurs de ressources
 lab:
   title: Activer les fournisseurs de ressources
   module: Setup
-layout: default
-nav_order: 2
-parent: Common setup instructions
 ---
 
 # Activer les fournisseurs de ressources Azure
@@ -21,8 +17,6 @@ Certains fournisseurs de ressources doivent être inscrits dans votre abonnement
     > &#128161 ; Alternativement; développez le menu **&#8801;**, sélectionnez **Tous les services**, puis, dans la catégorie **Tout**, sélectionnez **Abonnements**.
 
 1. Sélectionnez votre abonnement Azure.
-
-    > &#128221; Si vous avez plusieurs abonnements, sélectionnez celui que vous avez créé en échangeant votre Pass Azure.
 
 1. Dans le panneau de votre abonnement, dans la section **Paramètres**, sélectionnez **Fournisseurs de ressources**.
 
