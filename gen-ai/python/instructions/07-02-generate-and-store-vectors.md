@@ -1,11 +1,7 @@
 ---
-title: "07.2 - Générer des incorporations vectorielles avec Azure\_OpenAI et les stocker dans Azure\_Cosmos\_DB\_for\_NoSQL"
 lab:
   title: "07.2 - Générer des incorporations vectorielles avec Azure\_OpenAI et les stocker dans Azure\_Cosmos\_DB\_for\_NoSQL"
   module: Build copilots with Python and Azure Cosmos DB for NoSQL
-layout: default
-nav_order: 11
-parent: Python SDK labs
 ---
 
 # Générer des incorporations vectorielles avec Azure OpenAI et les stocker dans Azure Cosmos DB for NoSQL

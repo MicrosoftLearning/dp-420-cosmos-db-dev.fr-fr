@@ -42,6 +42,8 @@ Si vous n’avez pas encore cloné le référentiel de code du labo pour le cour
 
     > &#128161; Si vous avez exécuté le labo **Mesurer les performances des entités clientes** d’abord et que vous n’avez pas supprimé les ressources Azure créées par ce labo, fermez le terminal intégré, ignorez l’étape suivante et passez à la section suivante. Notez que si vous disposez déjà des ressources créées par le labo **Mesurer les performances des entités clientes** et que vous essayez d’exécuter le script ci-dessous, le script échoue.
 
+    > &#128221 ; Si vous utilisez le niveau gratuit de Cosmos DB pour ce labo, vous devez mettre à jour le fichier ***azuredeploy.json*** et modifier le débit de 4 000 à 1 000 de l’ensemble des bases de données et conteneurs.
+
 1. Dans le **terminal Git Bash**, exécutez les commandes suivantes. Les commandes exécutent un script qui crée un compte Azure Cosmos DB, puis créent et démarrent l’application que vous utilisez pour remplir la base de données et effectuer les exercices. *Une fois que vous avez entré les informations d’identification fournies pour le compte Azure, la génération peut durer entre 15 et 20 minutes*.
 
     ```

@@ -1,11 +1,7 @@
 ---
-title: "02 - Configurer le kit de développement logiciel (SDK) JavaScript Azure\_Cosmos\_DB pour le développement hors connexion"
 lab:
   title: "02 - Configurer le kit de développement logiciel (SDK) JavaScript Azure\_Cosmos\_DB pour le développement hors connexion"
   module: Configure the Azure Cosmos DB for NoSQL SDK
-layout: default
-nav_order: 5
-parent: JavaScript SDK labs
 ---
 
 # Configurer le kit de développement logiciel (SDK) JavaScript Azure Cosmos DB pour le développement hors connexion

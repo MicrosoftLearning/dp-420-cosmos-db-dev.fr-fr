@@ -1,11 +1,7 @@
 ---
-title: "07.4 - Implémenter RAG avec LangChain et la recherche vectorielle Azure\_Cosmos\_DB\_for\_NoSQL"
 lab:
   title: "07.4 - Implémenter RAG avec LangChain et la recherche vectorielle Azure\_Cosmos\_DB\_for\_NoSQL"
   module: Build copilots with Python and Azure Cosmos DB for NoSQL
-layout: default
-nav_order: 13
-parent: Python SDK labs
 ---
 
 # Implémenter RAG avec LangChain et la recherche vectorielle Azure Cosmos DB for NoSQL

@@ -1,11 +1,7 @@
 ---
-title: "01 - Se connecter à Azure\_Cosmos\_DB\_for\_NoSQL avec le kit de développement logiciel (SDK)"
 lab:
   title: "01 - Se connecter à Azure\_Cosmos\_DB\_for\_NoSQL avec le kit de développement logiciel (SDK)"
   module: Use the Azure Cosmos DB for NoSQL SDK
-layout: default
-nav_order: 4
-parent: Python SDK labs
 ---
 
 # Se connecter à Azure Cosmos DB for NoSQL avec le kit SDK
@@ -16,11 +12,11 @@ Dans ce labo, vous allez vous connecter à un compte Azure Cosmos DB for NoS
 
 ## Préparer votre environnement de développement
 
-Si vous n’avez pas déjà cloné le référentiel de code du labo pour **Générer des Copilots avec Azure Cosmos DB** et configuré votre environnement local, consultez les instructions dans [Configurer un environnement de labo local](00-setup-lab-environment.md) pour ce faire.
+Si vous n’avez pas déjà cloné le référentiel de code du labo pour **Générer des copilotes avec Azure Cosmos DB** et configuré votre environnement local, consultez les instructions dans [Configurer un environnement de labo local](00-setup-lab-environment.md) pour ce faire.
 
 ## Créer un compte Azure Cosmos DB for NoSQL
 
-Si vous avez déjà créé un compte Azure Cosmos DB for NoSQL pour les labos **Générer des copilotes avec Azure Cosmos DB** sur ce site, vous pouvez l’utiliser pour ce labo et passer à la [section suivante](#install-the-azure-cosmos-library). Dans le cas contraire, consultez les instructions dans [Configurer Azure Cosmos DB](../../common/instructions/00-setup-cosmos-db.md) pour créer un compte Azure Cosmos DB for NoSQL que vous utiliserez tout au long des modules du labo et accordez à votre identité de l’utilisateur l’accès à la gestion des données dans le compte en lui attribuant le rôle **Contributeur aux données intégrées Cosmos DB**.
+Si vous avez déjà créé un compte Azure Cosmos DB for NoSQL pour les labos **Générer des Copilots avec Azure Cosmos DB** sur ce site, vous pouvez l’utiliser pour ce labo et passer à la [section suivante](#install-the-azure-cosmos-library). Dans le cas contraire, consultez les instructions dans [Configurer Azure Cosmos DB](../../common/instructions/00-setup-cosmos-db.md) pour créer un compte Azure Cosmos DB for NoSQL que vous utiliserez tout au long des modules du labo et accordez à votre identité de l’utilisateur l’accès à la gestion des données dans le compte en lui attribuant le rôle **Contributeur aux données intégrées Cosmos DB**.
 
 ## Installer la bibliothèque azure-cosmos
 

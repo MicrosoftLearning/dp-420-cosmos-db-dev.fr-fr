@@ -1,11 +1,7 @@
 ---
-title: Configurer l’environnement lab
 lab:
   title: Configurer l’environnement lab
   module: Setup
-layout: default
-nav_order: 2
-parent: JavaScript SDK labs
 ---
 
 # Configurer un environnement de labo local

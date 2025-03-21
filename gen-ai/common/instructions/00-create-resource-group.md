@@ -1,11 +1,7 @@
 ---
-title: Créer un groupe de ressources de labo
 lab:
   title: Créer un groupe de ressources de labo
   module: Setup
-layout: default
-nav_order: 1
-parent: Common setup instructions
 ---
 
 # Créer un groupe de ressources Azure pour le labo
