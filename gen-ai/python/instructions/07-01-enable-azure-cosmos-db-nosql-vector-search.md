@@ -1,11 +1,7 @@
 ---
-title: "07.1 - Activer la recherche vectorielle pour Azure\_Cosmos\_DB\_for\_NoSQL"
 lab:
   title: "07.1 - Activer la recherche vectorielle pour Azure\_Cosmos\_DB\_for\_NoSQL"
   module: Build copilots with Python and Azure Cosmos DB for NoSQL
-layout: default
-nav_order: 10
-parent: Python SDK labs
 ---
 
 # Activer la recherche vectorielle pour Azure Cosmos DB for NoSQL
@@ -16,7 +12,7 @@ Dans ce labo, vous allez créer un compte Azure Cosmos DB for NoSQL et activ
 
 ## Préparer votre environnement de développement
 
-Si vous n’avez pas déjà cloné le référentiel de code du labo pour **Générer des Copilots avec Azure Cosmos DB** et configuré votre environnement local, consultez les instructions dans [Configurer un environnement de labo local](00-setup-lab-environment.md) pour ce faire.
+Si vous n’avez pas déjà cloné le référentiel de code du labo pour **Générer des copilotes avec Azure Cosmos DB** et configuré votre environnement local, consultez les instructions dans [Configurer un environnement de labo local](00-setup-lab-environment.md) pour ce faire.
 
 ## Créer un compte Azure Cosmos DB for NoSQL
 

@@ -1,11 +1,7 @@
 ---
-title: "02 - Configurer le kit de développement logiciel (SDK) Python Azure\_Cosmos\_DB pour le développement hors connexion"
 lab:
-  title: "02 - Configurer le kit de développement logiciel (SDK) Python Azure\_Cosmos\_DB pour le développement hors connexion"
+  title: "02 - Configurer le kit de développement logiciel (SDK) JavaScript Azure\_Cosmos\_DB pour le développement hors connexion"
   module: Configure the Azure Cosmos DB for NoSQL SDK
-layout: default
-nav_order: 5
-parent: Python SDK labs
 ---
 
 # Configurer le kit de développement logiciel (SDK) Python Azure Cosmos DB pour le développement hors connexion
