@@ -34,6 +34,7 @@ Si vous n’avez pas encore cloné le référentiel de code du labo pour le cour
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
+    | **Type de charge de travail** | **Formations** |
     | **Abonnement** | *Votre abonnement Azure existant* |
     | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
@@ -86,7 +87,7 @@ Si vous n’avez pas encore cloné le référentiel de code du labo pour le cour
 1. Ajoutez le package [Microsoft.Azure.Cosmos][nuget.org/packages/microsoft.azure.cosmos/3.22.1] depuis NuGet en utilisant la commande suivante :
 
     ```
-    dotnet add package Microsoft.Azure.Cosmos --version 3.22.1
+    dotnet add package Microsoft.Azure.Cosmos --version 3.49.0
     ```
 
 1. Générez le projet en utilisant la commande [dotnet build][docs.microsoft.com/dotnet/core/tools/dotnet-build] :

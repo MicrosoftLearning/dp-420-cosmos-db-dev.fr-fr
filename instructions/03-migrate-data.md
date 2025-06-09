@@ -24,6 +24,7 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
+    | **Type de charge de travail** | **Formations** |
     | **Abonnement** | *Votre abonnement Azure existant* |
     | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
@@ -40,9 +41,7 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
 
 1. Ce volet contient les détails de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du kit SDK. Plus précisément :
 
-    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus tard dans cet exercice.
-
-    1. Notez le champ **CLÉ PRIMAIRE**. Vous utiliserez cette valeur de **clé** plus tard dans cet exercice.
+    1. Remarquez le champ **PRIMARY CONNECTION STRING**. Vous utiliserez cette valeur de **chaîne de connexion** plus loin dans cet exercice.
 
 1. Gardez l’onglet du navigateur ouvert, car nous y retournerons ultérieurement.
 
@@ -54,8 +53,8 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
 
 1. Installez l’outil de ligne de commande [cosmicworks][nuget.org/packages/cosmicworks] pour une utilisation globale sur votre machine.
 
-    ```
-    dotnet tool install cosmicworks --global --version 1.*
+    ```powershell
+    dotnet tool install --global CosmicWorks --version 2.3.1
     ```
 
     > &#128161; L’exécution de cette commande peut prendre quelques minutes. Cette commande génère le message d’avertissement (*L’outil « cosmicworks » est déjà installé), si vous avez déjà installé la dernière version de cet outil.
@@ -64,15 +63,14 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
 
     | **Option** | **Valeur** |
     | ---: | :--- |
-    | **--endpoint** | *Valeur du point de terminaison que vous avez vérifiée précédemment dans ce labo* |
-    | **--key** | *Valeur de la clé que vous avez vérifiée précédemment dans ce labo* |
-    | **--datasets** | *product* |
+    | **-c** | *Valeur de la chaîne de connexion que vous avez vérifiée précédemment dans ce labo* |
+    | **--number-of-employees** | *La commande cosmicworks remplit votre base de données avec les employés et les conteneurs de produits,1 000 et 200 éléments respectivement, sauf indication contraire* |
 
-    ```
-    cosmicworks --endpoint <cosmos-endpoint> --key <cosmos-key> --datasets product
+    ```powershell
+    cosmicworks -c "connection-string" --number-of-employees 0 --disable-hierarchical-partition-keys
     ```
 
-    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/** et si votre clé est **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
+    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/** et si votre clé est **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks -c "AccountEndpoint=https://dp420.documents.azure.com:443/;AccountKey=fDR2ci9QgkdkvERTQ==" --number-of-employees 0 --disable-hierarchical-partition-keys``
 
 1. Attendez que la commande **cosmicworks** ait fini de remplir le compte avec une base de données, un conteneur et des éléments.
 
@@ -88,7 +86,7 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
 
 1. Observez et sélectionnez les différents éléments JSON dans le conteneur **produits**. Il s’agit des éléments créés par l’outil de ligne de commande utilisé dans les étapes précédentes.
 
-1. Sélectionnez le nœud **Mise à l’échelle et paramètres**. Sous l’onglet **Mise à l’échelle et paramètres**, sélectionnez **Manuel**, mettez à jour le **paramètre **débit requis de **4 000 RU/s** à **400 RU/s**, puis **enregistrez** vos modifications**.
+1. Sélectionnez le nœud **Mise à l’échelle**. Sous l’onglet **Mise à l’échelle**, sélectionnez **Manuel**, mettez à jour le paramètre **débit requis** de **4 000 RU/s** à **400 RU/s**, puis **enregistrez** vos modifications**.
 
 1. Dans le volet **Explorateur de données**, sélectionnez **Nouveau conteneur**.
 
@@ -99,8 +97,6 @@ Pour accompagner le conteneur products, vous créez manuellement un conteneur **
     | **ID de base de données** | *Utilisez la valeur existante* &vert; *cosmicworks* |
     | **ID de conteneur** | *`flatproducts`* |
     | **Clé de partition** | *`/category`* |
-    | **Débit du conteneur (mise à l’échelle automatique)** | *Manuel* |
-    | **RU/s** | *`400`* |
 
 1. De retour dans le volet **Explorateur de données**, développez le nœud de base de données **cosmicworks**, puis observez le nœud de conteneur **flatproducts** dans la hiérarchie.
 
@@ -119,9 +115,8 @@ Maintenant que les ressources Azure Cosmos DB pour NoSQL sont en place, vous cr�
     | **Nom** | *Entrez un nom globalement unique* |
     | **Région** | *Choisissez une région disponible* |
     | **Version** | *V2* |
-    | **Configuration Git** | *Configurer Git plus tard* |
 
-    > &#128221; Vos environnements de laboratoire peuvent avoir des restrictions vous empêchant de créer un nouveau groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
+    > &#128221; Vos environnements de labo peuvent présenter des restrictions qui vous empêchent de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
 
 1. Attendez que la tâche de déploiement se termine avant de poursuivre.
 
