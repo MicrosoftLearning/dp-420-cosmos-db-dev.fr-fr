@@ -22,6 +22,7 @@ Les procédures stockées sont créées en JavaScript intégré au langage et pr
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
+    | **Type de charge de travail** | **Formations** |
     | **Abonnement** | *Votre abonnement Azure existant* |
     | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |

@@ -22,9 +22,9 @@ Dans l’idéal, vous devez suivre ces labos dans un environnement de labo hébe
 
 1. Installez la dernière version de Microsoft Edge à partir de [microsoft.com/edge].
 
-### SDK .NET 6
+### SDK .NET 8
 
-1. Téléchargez et installez le Kit de développement logiciel (SDK) à partir de [dotnet.microsoft.com/download/dotnet/6.0].
+1. Téléchargez et installez le Kit de développement logiciel (SDK) à partir de [dotnet.microsoft.com/download/dotnet/8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
 ### PowerShell 7
 

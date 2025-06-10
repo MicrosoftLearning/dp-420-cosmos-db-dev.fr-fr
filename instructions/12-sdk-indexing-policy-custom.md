@@ -36,6 +36,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
+    | **Type de charge de travail** | **Formations** |
     | **Abonnement** | *Votre abonnement Azure existant* |
     | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
@@ -112,7 +113,7 @@ Le SDK .NET contient une suite de classes liées à la classe parente [Microsoft
 1. Créez une variable de type [ContainerProperties][docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.containerproperties] nommée **options** qui transmet les valeurs ``products`` et ``/categoryId`` en tant que paramètres de constructeur :
 
     ```
-    ContainerProperties options = new ("products", "/categoryId");
+    ContainerProperties options = new ("products", "/category/name");
     ```
 
 1. Attribuez la variable **policy** à la propriété [IndexingPolicy][docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.containerproperties.indexingpolicy] de la variable **options** :
@@ -156,7 +157,7 @@ Le SDK .NET contient une suite de classes liées à la classe parente [Microsoft
         new IncludedPath{ Path = "/name/?" }
     );
 
-    ContainerProperties options = new ("products", "/categoryId");
+    ContainerProperties options = new ("products", "/category/name");
     options.IndexingPolicy = policy;
 
     Container container = await database.CreateContainerIfNotExistsAsync(options);
@@ -189,9 +190,9 @@ Comme avec n’importe quelle autre stratégie d’indexation, vous pouvez utili
 
 1. Dans la ressource de compte **Azure Cosmos DB**, accédez au volet **Explorateur de données**.
 
-1. Dans l’**Explorateur de données**, développez le nœud de base de données **cosmicworks**, puis observez le nœud de conteneur **products** dans l’arborescence de l’**API NOSQL**.
+1. Dans l’**Explorateur de données**, développez le nœud de base de données **cosmicworks**, puis observez le nouveau nœud de conteneur **products** dans l’arborescence de navigation de l’**API NOSQL**.
 
-1. Dans le nœud de conteneur **products** de l’arborescence de navigation de l’**API NOSQL**, sélectionnez **Mise à l’échelle et paramètres**.
+1. Dans le nœud de conteneur **products** de l’arborescence de navigation de l’**API NOSQL**, sélectionnez **Paramètres**.
 
 1. Observez la stratégie d’indexation dans la section **Stratégie d’indexation** :
 

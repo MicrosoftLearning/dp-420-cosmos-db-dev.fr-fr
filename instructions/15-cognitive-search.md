@@ -22,13 +22,15 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
+    | **Type de charge de travail** | **Formations** |
     | **Abonnement** | *Votre abonnement Azure existant* |
     | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
     | **Lieu** | *Choisissez une région disponible* |
-    | **Mode de capacité** | *Sans serveur* |
+    | **Mode de capacité** | *Débit approvisionné* |
+    | **Appliquer la remise de niveau Gratuit** | *Ne pas appliquer* |
 
-    > &#128221; Vos environnements de labo peuvent présenter des restrictions qui vous empêchent de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
+    > &#128221; Vos environnements de labo peuvent présenter des restrictions vous empêchant de créer un groupe de ressources. Si tel est le cas, utilisez le groupe de ressources existant précréé.
 
 1. Attendez la fin de la tâche de déploiement avant de passer à cette tâche.
 
@@ -36,23 +38,32 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
 1. Ce volet contient les détails de connexion et les informations d’identification nécessaires pour se connecter au compte à partir du kit SDK. Plus précisément :
 
-    1. Notez le champ **URI**. Vous utiliserez cette valeur **endpoint** plus tard dans cet exercice.
-
-    1. Notez le champ **CLÉ PRIMAIRE**. Vous utiliserez cette valeur de **clé** plus loin dans cet exercice.
-
     1. Remarquez le champ **PRIMARY CONNECTION STRING**. Vous utiliserez cette valeur de **chaîne de connexion** plus loin dans cet exercice.
 
 1. Dans le menu de ressource, sélectionnez **Explorateur de données**.
 
-1. Sur le volet **Explorateur de données** , sélectionnez **Nouveau conteneur**.
+1. Dans le volet **Explorateur de données**, développez **Nouveau conteneur**, puis sélectionnez **Nouvelle base de données**.
+
+1. Dans la fenêtre contextuelle **Nouvelle base de données**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
+
+    | **Paramètre** | **Valeur** |
+    | --: | :-- |
+    | **ID de base de données** | *``cosmicworks``* |
+    | **Approvisionner le débit** | activé |
+    | **Débit de la base de données** | **Manuel** |
+    | **RU/s de base de données requises** | ``1000`` |
+
+1. De retour dans le volet **Explorateur de données**, observez le nœud de base de données **cosmicworks** dans la hiérarchie.
+
+1. Dans le volet **Explorateur de données**, sélectionnez **Nouveau conteneur**.
 
 1. Dans la fenêtre contextuelle **Nouveau conteneur**, entrez les valeurs suivantes pour chaque paramètre, puis sélectionnez **OK** :
 
     | **Paramètre** | **Valeur** |
     | --: | :-- |
-    | **ID de base de données** | *Créer nouveau* &vert; *``cosmicworks``* |
+    | **ID de base de données** | *Utilisez la valeur existante* &vert; *cosmicworks* |
     | **ID de conteneur** | *``products``* |
-    | **Clé de partition** | *``/categoryId``* |
+    | **Clé de partition** | *``/category/name``* |
 
 1. De retour dans le volet **Explorateur de données**, développez le nœud de base de données **cosmicworks** , puis observez le nœud du conteneur **produits** dans la hiérarchie.
 
@@ -65,7 +76,7 @@ Vous utiliserez un utilitaire en ligne de commande qui crée une base de donnée
 1. Installez l’outil de ligne de commande [cosmiqueworks][nuget.org/packages/cosmicworks] pour une utilisation globale sur votre ordinateur.
 
     ```
-    dotnet tool install cosmicworks --global --version 1.*
+    dotnet tool install --global CosmicWorks --version 2.3.1
     ```
 
     > &#128161; L’exécution de cette commande peut prendre quelques minutes. Cette commande génère le message d’avertissement (*L’outil « cosmicworks » est déjà installé), si vous avez déjà installé la dernière version de cet outil.
@@ -74,15 +85,14 @@ Vous utiliserez un utilitaire en ligne de commande qui crée une base de donnée
 
     | **Option** | **Valeur** |
     | ---: | :--- |
-    | **--endpoint** | *Valeur de point de terminaison que vous avez copiée plus tôt dans ce labo* |
-    | **--key** | *Valeur de clé que vous avez copiée plus tôt dans ce labo* |
-    | **--datasets** | *product* |
+    | **-c** | *Valeur de la chaîne de connexion que vous avez vérifiée précédemment dans ce labo* |
+    | **--number-of-employees** | *La commande cosmicworks remplit votre base de données avec les employés et les conteneurs de produits,1 000 et 200 éléments respectivement, sauf indication contraire* |
 
-    ```
-    cosmicworks --endpoint <cosmos-endpoint> --key <cosmos-key> --datasets product
+    ```powershell
+    cosmicworks -c "connection-string" --number-of-employees 0 --disable-hierarchical-partition-keys
     ```
 
-    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/** et si votre clé est **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks --endpoint https://dp420.documents.azure.com:443/ --key fDR2ci9QgkdkvERTQ== --datasets product``
+    > &#128221; Par exemple, si votre point de terminaison est **https&shy;://dp420.documents.azure.com:443/** et si votre clé est **fDR2ci9QgkdkvERTQ==**, la commande est : ``cosmicworks -c "AccountEndpoint=https://dp420.documents.azure.com:443/;AccountKey=fDR2ci9QgkdkvERTQ==" --number-of-employees 0 --disable-hierarchical-partition-keys``
 
 1. Attendez que la commande **cosmicworks** ait fini de remplir le compte avec une base de données, un conteneur et des éléments.
 
@@ -135,7 +145,7 @@ Vous allez créer un indexeur qui indexe un sous-ensemble de données dans un co
     ```sql
     SELECT 
         p.id, 
-        p.categoryId, 
+        p.category, 
         p.name, 
         p.price,
         p._ts
@@ -167,7 +177,7 @@ Vous allez créer un indexeur qui indexe un sous-ensemble de données dans un co
     | **Champ** | **Récupérable** | **Filtrable** | **Triable** | **À choix multiples** | **Possibilité de recherche** |
     | ---: | :---: | :---: | :---: | :---: | :---: |
     | **id** | &#10004; | &#10004; | &#10004; | | |
-    | **categoryId** | &#10004; | &#10004; | &#10004; | &#10004; | |
+    | **category** | &#10004; | &#10004; | &#10004; | &#10004; | |
     | **name** | &#10004; | &#10004; | &#10004; | | &#10004; (Français - Microsoft) |
     | **p**rice | &#10004; | &#10004; | &#10004; | &#10004; | |
 

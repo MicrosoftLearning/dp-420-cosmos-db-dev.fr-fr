@@ -30,6 +30,7 @@ Commençons par créer un compte serverless. Il n’y a pas beaucoup à configur
 
     | **Paramètre** | **Valeur** |
     | --: | :-- |
+    | **Type de charge de travail** | **Formations** |
     | **Abonnement** | **Utilisez votre abonnement Azure existant.** *Toutes les ressources doivent appartenir à un groupe de ressources. Chaque groupe de ressources doit appartenir à un abonnement.* |
     | **Groupe de ressources** | **Utilisez un groupe de ressources existant ou créez-en un.** *Toutes les ressources doivent appartenir à un groupe de ressources.*|
     | **Nom du compte** |  **Entrez un nom globalement unique.** *Nom du compte globalement unique. Ce nom sera utilisé comme élément de l’adresse DNS pour les requêtes.  Le portail vérifiera le nom en temps réel.* |
@@ -64,7 +65,7 @@ Commençons par créer un compte serverless. Il n’y a pas beaucoup à configur
     | --: | :-- |
     | **ID de base de données** | *Utilisez la valeur existante* &vert; *cosmicworks* |
     | **ID de conteneur** | *`products`* |
-    | **Clé de partition** | *`/categoryId`* |
+    | **Clé de partition** | *`/category/name`* |
 
 1. De retour dans le volet **Explorateur de données**, développez le nœud de base de données **cosmicworks**, puis observez le nœud de conteneur des **produits** dans la hiérarchie.
 
@@ -86,6 +87,7 @@ Maintenant, nous allons créer un compte de débit approvisionné avec des optio
 
     | **Paramètre** | **Valeur** |
     | --: | :-- |
+    | **Type de charge de travail** | **Formations** |
     | **Abonnement** | **Utilisez votre abonnement Azure existant.** *Toutes les ressources doivent appartenir à un groupe de ressources. Chaque groupe de ressources doit appartenir à un abonnement.* |
     | **Groupe de ressources** | **Utilisez un groupe de ressources existant ou créez-en un.** *Toutes les ressources doivent appartenir à un groupe de ressources.*|
     | **Nom du compte** |  **Entrez un nom globalement unique.** *Nom du compte globalement unique. Ce nom sera utilisé comme élément de l’adresse DNS pour les requêtes.  Le portail vérifiera le nom en temps réel.* |

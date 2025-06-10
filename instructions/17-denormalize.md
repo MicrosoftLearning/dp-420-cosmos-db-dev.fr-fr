@@ -37,7 +37,7 @@ Si vous n’avez pas encore cloné le référentiel de code du labo pour le cour
     ```
     "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
     az login
-    dotnet add package Microsoft.Azure.Cosmos --version 3.22.1
+    dotnet add package Microsoft.Azure.Cosmos --version 3.49.0
     ```
 
     > &#128161; Si vous avez exécuté le labo **Mesurer les performances des entités clientes** d’abord et que vous n’avez pas supprimé les ressources Azure créées par ce labo, fermez le terminal intégré, ignorez l’étape suivante et passez à la section suivante. Notez que si vous disposez déjà des ressources créées par le labo **Mesurer les performances des entités clientes** et que vous essayez d’exécuter le script ci-dessous, le script échoue.

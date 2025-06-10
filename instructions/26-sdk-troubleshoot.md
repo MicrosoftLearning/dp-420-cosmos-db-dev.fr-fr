@@ -8,7 +8,7 @@ lab:
 
 Azure Cosmos DB offre un ensemble complet de codes de réponse qui nous aident à résoudre facilement les problèmes susceptibles de se produire avec nos différents types d’opérations. L’idée est de veiller à programmer une gestion appropriée des erreurs quand nous créons des applications pour Azure Cosmos DB.
 
-Dans ce labo, nous créons un programme piloté par un menu qui nous permet d’insérer ou de supprimer un des deux documents. L’objectif principal de ce labo est de présenter certains codes de réponse les plus courants et de montrer comment les intégrer dans le code de gestion des erreurs de notre application.  Bien que nous codions la gestion des erreurs pour plusieurs codes de réponse, nous déclenchons seulement deux types de conditions différents.  Par ailleurs, la gestion des erreurs ne fait rien de complexe, selon le code de réponse, elle affiche un message à l’écran ou attend 10 secondes avant de réessayer l’opération. 
+Dans ce labo, nous créons un programme piloté par un menu qui nous permet d’insérer ou de supprimer un des deux documents. L’objectif principal de ce labo est de présenter certains codes de réponse les plus courants et de montrer comment les intégrer dans le code de gestion des erreurs de notre application.  Bien que nous codions la gestion des erreurs pour plusieurs codes de réponse, nous déclenchons seulement deux types de conditions différents.  Par ailleurs, la gestion des erreurs ne fait rien de complexe, selon le code de réponse, elle affiche un message à l’écran ou attend 10 secondes avant de réessayer l’opération.
 
 ## Préparer votre environnement de développement
 
@@ -36,6 +36,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
     | **Paramètre** | **Valeur** |
     | ---: | :--- |
+    | **Type de charge de travail** | **Formations** |
     | **Abonnement** | *Votre abonnement Azure existant* |
     | **Groupe de ressources** | *Sélectionner un groupe de ressources existant ou en créer un* |
     | **Nom du compte** | *Entrez un nom globalement unique* |
@@ -68,10 +69,10 @@ L’interface CLI .NET comprend une commande [add package][docs.microsoft.com/do
 
     > &#128221; Cette commande ouvre le terminal avec le répertoire de démarrage déjà défini sur le dossier **26-sdk-troubleshoot**.
 
-1. Ajoutez le package [Microsoft.Azure.Cosmos][nuget.org/packages/microsoft.azure.cosmos/3.22.1] à partir de NuGet en utilisant la commande suivante :
+1. Ajoutez le package [Microsoft.Azure.Cosmos][nuget.org/packages/microsoft.azure.cosmos/3.49.0] à partir de NuGet en utilisant la commande suivante :
 
     ```
-    dotnet add package Microsoft.Azure.Cosmos --version 3.22.1
+    dotnet add package Microsoft.Azure.Cosmos --version 3.49.0
     ```
 
 ## Exécutez un script pour créer des options pilotées par un menu pour insérer et supprimer des documents.

@@ -30,6 +30,7 @@ Azure Cosmos DB est un service de base de données NoSQL basé sur le cloud qui 
 
     | **Paramètre** | **Valeur** |
     | --: | :-- |
+    | **Type de charge de travail** | **Formations** |
     | **Abonnement** | **Utilisez votre abonnement Azure existant.** *Toutes les ressources doivent appartenir à un groupe de ressources. Chaque groupe de ressources doit appartenir à un abonnement.* |
     | **Groupe de ressources** | **Utilisez un groupe de ressources existant ou créez-en un.** *Toutes les ressources doivent appartenir à un groupe de ressources.* |
     | **Nom du compte** | **Entrez un nom globalement unique.** *Nom du compte globalement unique. Ce nom sera utilisé comme élément de l’adresse DNS pour les requêtes.  Le portail vérifiera le nom en temps réel.* |
@@ -84,7 +85,7 @@ L’Explorateur de données inclut également une suite de fonctionnalités pour
     }
     ```
 
-1. Sélectionnez **Enregistrer** depuis la barre de commandes pour ajouter le premier élément JSON :
+1. Sélectionnez **Enregistrer** depuis la barre de commandes pour ajouter le premier élément JSON.
 
 1. De retour dans l’onglet **Éléments**, sélectionnez **Nouvel élément**depuis la barre de commandes. Dans l’éditeur, remplacez l’élément JSON d’espace réservé par le contenu suivant :
 
@@ -98,7 +99,7 @@ L’Explorateur de données inclut également une suite de fonctionnalités pour
     }
     ```
 
-1. Sélectionnez **Enregistrer** depuis la barre de commandes pour ajouter le deuxième élément JSON :
+1. Sélectionnez **Enregistrer** depuis la barre de commandes pour ajouter le deuxième élément JSON.
 
 1. Dans l’onglet **Éléments** , observez les deux nouveaux éléments dans le volet **Éléments**.
 
